@@ -14,19 +14,22 @@ Comprehensive guide to checking, monitoring, and managing systemd services on Ce
 ### 1. Check Service Status
 
 ```bash
-# Check specific service status
 sudo systemctl status nginx
+```
 
-# Check multiple services
+```bash
 sudo systemctl status nginx mysql php-fpm
+```
 
-# Check all services
+```bash
 sudo systemctl list-units --type=service
+```
 
-# Check all active services
+```bash
 sudo systemctl list-units --type=service --state=active --no-pager
+```
 
-# Check all running services
+```bash
 sudo systemctl list-units --type=service --state=running --no-pager
 ```
 
@@ -41,13 +44,14 @@ sudo systemctl list-units --type=service --state=running --no-pager
 ### 2. Check Service Enabled Status
 
 ```bash
-# Check if service is enabled (auto-start on boot)
 sudo systemctl is-enabled nginx
+```
 
-# List all enabled services
+```bash
 sudo systemctl list-unit-files --type=service | grep enabled
+```
 
-# List services by enable status
+```bash
 sudo systemctl list-unit-files --type=service --state=enabled --no-pager
 ```
 
@@ -62,16 +66,18 @@ sudo systemctl list-unit-files --type=service --state=enabled --no-pager
 ### 3. Check if Service is Running/Stopped
 
 ```bash
-# Check if service is running
 sudo systemctl is-active nginx
+```
 
-# Check if service is enabled
+```bash
 sudo systemctl is-enabled nginx
+```
 
-# Check failed services
+```bash
 sudo systemctl list-units --failed --type=service --no-pager
+```
 
-# Check services in various states
+```bash
 sudo systemctl list-units --type=service --all --state=failed
 ```
 
@@ -89,16 +95,18 @@ sudo systemctl list-units --type=service --all --state=failed
 ### 4. Check Service Resource Usage
 
 ```bash
-# Show resource usage of specific service
 systemctl show -p MemoryCurrent -p CPUUsageNSec -p MainPID nginx
+```
 
-# Monitor service process
+```bash
 ps aux | grep nginx | grep -v grep
+```
 
-# Check memory usage of service
+```bash
 ps aux | grep nginx | awk '{print $2, $3, $4, $11}' | column -t
+```
 
-# Show service process tree
+```bash
 pstree -p $(systemctl show -p MainPID --value nginx)
 ```
 
@@ -107,16 +115,18 @@ pstree -p $(systemctl show -p MainPID --value nginx)
 ### 5. Check Service Dependencies
 
 ```bash
-# Show what service depends on
 sudo systemctl show -p Requires nginx
+```
 
-# Show what depends on this service
+```bash
 sudo systemctl show -p RequiredBy nginx
+```
 
-# Show service wants and wanted-by
+```bash
 sudo systemctl show -p Wants -p WantedBy nginx
+```
 
-# Show all dependencies
+```bash
 sudo systemctl show -p Before -p After nginx
 ```
 
@@ -125,13 +135,14 @@ sudo systemctl show -p Before -p After nginx
 ### 6. Check Service Restart Policy
 
 ```bash
-# Show restart settings
 sudo systemctl show -p Restart -p RestartSec nginx
+```
 
-# Show all properties
+```bash
 sudo systemctl show nginx | grep -E "^(Restart|RestartSec|TimeoutStopSec|TimeoutStartSec)"
+```
 
-# Show service type
+```bash
 sudo systemctl show -p Type nginx
 ```
 
@@ -142,22 +153,26 @@ sudo systemctl show -p Type nginx
 ### 7. Check Nginx Service
 
 ```bash
-# Check Nginx status
 sudo systemctl status nginx
+```
 
-# Check Nginx configuration
+```bash
 sudo nginx -t
+```
 
-# Show Nginx master/worker processes
+```bash
 ps aux | grep nginx | grep -v grep
+```
 
-# Check Nginx listening ports
+```bash
 sudo ss -tlnp | grep nginx
+```
 
-# Check Nginx error log
+```bash
 sudo tail -20 /var/log/nginx/error.log
+```
 
-# Check Nginx access log
+```bash
 sudo tail -20 /var/log/nginx/access.log
 ```
 
@@ -166,24 +181,30 @@ sudo tail -20 /var/log/nginx/access.log
 ### 8. Check MySQL/MariaDB Service
 
 ```bash
-# Check MySQL status
 sudo systemctl status mysql
-# or
+```
+
+```bash
 sudo systemctl status mariadb
+```
 
-# Check MySQL processes
+```bash
 ps aux | grep mysql | grep -v grep
+```
 
-# Check MySQL listening ports
+```bash
 sudo ss -tlnp | grep mysql
+```
 
-# Check MySQL error log
+```bash
 sudo tail -20 /var/log/mysql/error.log
+```
 
-# Check MySQL connection
+```bash
 mysql -u root -p -e "status;"
+```
 
-# Show running MySQL queries
+```bash
 mysql -u root -p -e "SHOW PROCESSLIST;"
 ```
 
@@ -192,22 +213,26 @@ mysql -u root -p -e "SHOW PROCESSLIST;"
 ### 9. Check PHP-FPM Service
 
 ```bash
-# Check PHP-FPM status
 sudo systemctl status php-fpm
+```
 
-# Check PHP-FPM version
+```bash
 php-fpm -v
+```
 
-# Check PHP-FPM processes
+```bash
 ps aux | grep php-fpm | grep -v grep
+```
 
-# Check PHP-FPM listening ports
+```bash
 sudo ss -tlnp | grep php-fpm
+```
 
-# Check PHP-FPM configuration
+```bash
 php-fpm -t
+```
 
-# Check PHP-FPM error log
+```bash
 sudo tail -20 /var/log/php-fpm/error.log
 ```
 
@@ -216,25 +241,34 @@ sudo tail -20 /var/log/php-fpm/error.log
 ### 10. Check Apache/HTTPD Service
 
 ```bash
-# Check Apache status
 sudo systemctl status apache2
-# or for CentOS
+```
+
+```bash
 sudo systemctl status httpd
+```
 
-# Check Apache configuration
+```bash
 sudo apache2ctl configtest
-# or
+```
+
+```bash
 sudo httpd -t
+```
 
-# Check Apache processes
+```bash
 ps aux | grep apache | grep -v grep
+```
 
-# Check Apache listening ports
+```bash
 sudo ss -tlnp | grep apache
+```
 
-# Check Apache error log
+```bash
 sudo tail -20 /var/log/apache2/error.log
-# or
+```
+
+```bash
 sudo tail -20 /var/log/httpd/error_log
 ```
 
@@ -243,22 +277,26 @@ sudo tail -20 /var/log/httpd/error_log
 ### 11. Check Redis Service
 
 ```bash
-# Check Redis status
 sudo systemctl status redis
+```
 
-# Check Redis processes
+```bash
 ps aux | grep redis | grep -v grep
+```
 
-# Check Redis listening ports
+```bash
 sudo ss -tlnp | grep redis
+```
 
-# Connect to Redis CLI
+```bash
 redis-cli
+```
 
-# Check Redis info from CLI
+```bash
 redis-cli INFO
+```
 
-# Check Redis memory usage
+```bash
 redis-cli INFO memory
 ```
 
@@ -267,19 +305,22 @@ redis-cli INFO memory
 ### 12. Check PostgreSQL Service
 
 ```bash
-# Check PostgreSQL status
 sudo systemctl status postgresql
+```
 
-# Check PostgreSQL processes
+```bash
 ps aux | grep postgres | grep -v grep
+```
 
-# Check PostgreSQL listening ports
+```bash
 sudo ss -tlnp | grep postgres
+```
 
-# Check PostgreSQL logs
+```bash
 sudo tail -20 /var/log/postgresql/postgresql.log
+```
 
-# Connect to PostgreSQL
+```bash
 psql -U postgres -l
 ```
 
@@ -288,21 +329,26 @@ psql -U postgres -l
 ### 13. Check SSH Service
 
 ```bash
-# Check SSH status
 sudo systemctl status sshd
+```
 
-# Check SSH processes
+```bash
 ps aux | grep sshd | grep -v grep
+```
 
-# Check SSH listening ports
+```bash
 sudo ss -tlnp | grep sshd
+```
 
-# Check SSH configuration
+```bash
 sudo sshd -t
+```
 
-# Check SSH log
+```bash
 sudo tail -20 /var/log/auth.log
-# or
+```
+
+```bash
 sudo tail -20 /var/log/secure
 ```
 
@@ -313,28 +359,34 @@ sudo tail -20 /var/log/secure
 ### 14. Start/Stop/Restart Services
 
 ```bash
-# Start service
 sudo systemctl start nginx
+```
 
-# Stop service
+```bash
 sudo systemctl stop nginx
+```
 
-# Restart service
+```bash
 sudo systemctl restart nginx
+```
 
-# Reload service configuration (without restart)
+```bash
 sudo systemctl reload nginx
+```
 
-# Enable service (auto-start on boot)
+```bash
 sudo systemctl enable nginx
+```
 
-# Disable service (remove auto-start)
+```bash
 sudo systemctl disable nginx
+```
 
-# Mask service (prevent from starting)
+```bash
 sudo systemctl mask nginx
+```
 
-# Unmask service
+```bash
 sudo systemctl unmask nginx
 ```
 
@@ -343,13 +395,14 @@ sudo systemctl unmask nginx
 ### 15. Restart Multiple Services
 
 ```bash
-# Restart web services
 sudo systemctl restart nginx mysql php-fpm
+```
 
-# Restart all modified services
+```bash
 sudo systemctl restart datadog-agent
+```
 
-# Restart in specific order
+```bash
 sudo systemctl restart nginx && sudo systemctl restart php-fpm && sudo systemctl restart mysql
 ```
 
@@ -360,25 +413,30 @@ sudo systemctl restart nginx && sudo systemctl restart php-fpm && sudo systemctl
 ### 16. Check Service Logs
 
 ```bash
-# View last 20 lines of service logs
 sudo journalctl -u nginx -n 20
+```
 
-# Follow service logs in real-time
+```bash
 sudo journalctl -u nginx -f
+```
 
-# View service logs from specific time
+```bash
 sudo journalctl -u nginx --since "2025-10-23 10:00:00"
+```
 
-# View service errors only
+```bash
 sudo journalctl -u nginx -p err
+```
 
-# View service errors and warnings
+```bash
 sudo journalctl -u nginx -p warn
+```
 
-# View service logs in reverse (newest first)
+```bash
 sudo journalctl -u nginx -r -n 50
+```
 
-# Export service logs to file
+```bash
 sudo journalctl -u nginx > /tmp/nginx_logs.txt
 ```
 
@@ -387,19 +445,22 @@ sudo journalctl -u nginx > /tmp/nginx_logs.txt
 ### 17. Check Service Startup Errors
 
 ```bash
-# Show service startup status and errors
 sudo systemctl status nginx
+```
 
-# Show full journal entry for service
+```bash
 sudo journalctl -u nginx -n 100
+```
 
-# Check if service failed to start
+```bash
 sudo systemctl list-units --failed
+```
 
-# Show detailed error information
+```bash
 sudo journalctl -u nginx -p err --since today
+```
 
-# Show service unit file contents
+```bash
 sudo systemctl cat nginx
 ```
 
@@ -408,19 +469,22 @@ sudo systemctl cat nginx
 ### 18. Check Service Configuration
 
 ```bash
-# Show service unit file
 sudo systemctl cat nginx
+```
 
-# Show service properties
+```bash
 sudo systemctl show nginx
+```
 
-# Show specific properties
+```bash
 sudo systemctl show nginx -p ExecStart -p ExecReload -p ExecStop
+```
 
-# Check service environment variables
+```bash
 sudo systemctl show -p Environment nginx
+```
 
-# Show service working directory
+```bash
 sudo systemctl show -p WorkingDirectory nginx
 ```
 
@@ -431,19 +495,22 @@ sudo systemctl show -p WorkingDirectory nginx
 ### 19. Check Services by Port
 
 ```bash
-# List all listening ports with services
 sudo ss -tlnp
+```
 
-# Show specific port and service
+```bash
 sudo ss -tlnp | grep :80
+```
 
-# Check which service is using specific port
+```bash
 sudo lsof -i :8080
+```
 
-# Show all network connections
+```bash
 sudo netstat -tulnp | grep LISTEN
+```
 
-# Check specific protocol
+```bash
 sudo ss -tcp -listen -process
 ```
 
@@ -452,13 +519,14 @@ sudo ss -tcp -listen -process
 ### 20. Check UDP Services
 
 ```bash
-# Show UDP listening ports
 sudo ss -ulnp
+```
 
-# Show UDP connections
+```bash
 sudo netstat -ulnp
+```
 
-# Check specific UDP port
+```bash
 sudo ss -u | grep 53
 ```
 
@@ -469,16 +537,18 @@ sudo ss -u | grep 53
 ### 21. Check All Services Summary
 
 ```bash
-# Show all service units
 sudo systemctl list-units --type=service --all
+```
 
-# Show all services with state
+```bash
 sudo systemctl list-units --type=service --all --no-pager | grep -E 'nginx|mysql|php|redis|datadog'
+```
 
-# Count services by state
+```bash
 sudo systemctl list-units --type=service | tail -1
+```
 
-# Show loaded services only
+```bash
 sudo systemctl list-units --type=service --all --state=loaded
 ```
 
@@ -487,16 +557,18 @@ sudo systemctl list-units --type=service --all --state=loaded
 ### 22. Check Failed/Problematic Services
 
 ```bash
-# List all failed services
 sudo systemctl list-units --failed --type=service
+```
 
-# Check specific service for errors
+```bash
 sudo systemctl status nginx 2>&1 | grep -i error
+```
 
-# Show services in inactive state
+```bash
 sudo systemctl list-units --type=service --state=inactive
+```
 
-# Show services that failed to load
+```bash
 sudo systemctl list-units --type=service --state=failed
 ```
 
@@ -505,59 +577,19 @@ sudo systemctl list-units --type=service --state=failed
 ### 23. Monitor Service Performance
 
 ```bash
-# Monitor CPU/Memory of service
 top -p $(systemctl show -p MainPID --value nginx)
+```
 
-# Show all resource limits
+```bash
 cat /proc/$(systemctl show -p MainPID --value nginx)/limits
+```
 
-# Check file descriptors used by service
+```bash
 ls -la /proc/$(systemctl show -p MainPID --value nginx)/fd | wc -l
+```
 
-# Monitor in real-time
+```bash
 watch -n 1 'systemctl show -p MemoryCurrent nginx'
-```
-
----
-
-## One-Liner Quick Commands
-
-### 24. Check All Web Services Status (One-Liner)
-
-```bash
-echo "[NGINX]" && sudo systemctl status nginx -l && echo "" && echo "[MYSQL]" && sudo systemctl status mysql -l && echo "" && echo "[PHP-FPM]" && sudo systemctl status php-fpm -l
-```
-
----
-
-### 25. Check All Listening Services (One-Liner)
-
-```bash
-echo "=== LISTENING SERVICES ===" && sudo ss -tlnp 2>/dev/null | grep LISTEN && echo "" && echo "=== BY PORT ===" && sudo ss -tlnp 2>/dev/null | awk 'NR>1 {print $4, $7}' | sort -u
-```
-
----
-
-### 26. Full Service Health Check (One-Liner)
-
-```bash
-echo "╔══════════════════════════════════════════════╗" && echo "║     SERVICE HEALTH CHECK REPORT             ║" && echo "╚══════════════════════════════════════════════╝" && echo "" && echo "[ACTIVE SERVICES]" && sudo systemctl list-units --type=service --state=running --no-pager | tail -n +2 | head -20 && echo "" && echo "[FAILED SERVICES]" && sudo systemctl list-units --failed --type=service --no-pager | tail -n +2 || echo "  None" && echo "" && echo "[LISTENING PORTS]" && sudo ss -tlnp 2>/dev/null | tail -20 && echo "" && echo "[DATADOG AGENT]" && sudo systemctl status datadog-agent --no-pager | head -10
-```
-
----
-
-### 27. Check All Services and Recent Errors (One-Liner)
-
-```bash
-{ echo "[RUNNING SERVICES]"; sudo systemctl list-units --type=service --state=running --no-pager | grep -E 'nginx|mysql|php|datadog|redis'; echo ""; echo "[SERVICE ERRORS (Last 24h)]"; sudo journalctl --since="24 hours ago" -p err --type=service | head -30; } | tee /tmp/service_check_$(date +%Y%m%d_%H%M%S).log
-```
-
----
-
-### 28. Monitor Service Changes (One-Liner)
-
-```bash
-watch -n 5 'echo "=== SERVICE STATUS ===" && sudo systemctl list-units --type=service --state=running | tail -n +2 | wc -l && echo "running services" && echo "" && echo "=== LISTENING PORTS ===" && sudo ss -tlnp 2>/dev/null | tail -20'
 ```
 
 ---
@@ -567,16 +599,18 @@ watch -n 5 'echo "=== SERVICE STATUS ===" && sudo systemctl list-units --type=se
 ### 29. Check and Set Restart Policy
 
 ```bash
-# Check current restart policy
 sudo systemctl show -p Restart nginx
+```
 
-# Show restart delay
+```bash
 sudo systemctl show -p RestartSec nginx
+```
 
-# Edit service to change restart policy
+```bash
 sudo systemctl edit nginx
+```
 
-# Add/modify restart policy in service file
+```bash
 # [Service]
 # Restart=always
 # RestartSec=10s
@@ -587,13 +621,14 @@ sudo systemctl edit nginx
 ### 30. Automatic Service Recovery
 
 ```bash
-# Check if service auto-restarts
 sudo systemctl show -p Restart -p RestartSec nginx
+```
 
-# Show service restart count
+```bash
 sudo journalctl -u nginx | grep "Restart count"
+```
 
-# Check systemd watchdog settings
+```bash
 sudo systemctl show -p WatchdogSec nginx
 ```
 
@@ -604,19 +639,22 @@ sudo systemctl show -p WatchdogSec nginx
 ### 31. Check Service Dependencies
 
 ```bash
-# Show what starts before this service
 sudo systemctl show -p Before nginx
+```
 
-# Show what starts after this service
+```bash
 sudo systemctl show -p After nginx
+```
 
-# Show required services
+```bash
 sudo systemctl show -p Requires nginx
+```
 
-# Show required by
+```bash
 sudo systemctl show -p RequiredBy nginx
+```
 
-# Check wants dependencies
+```bash
 sudo systemctl show -p Wants nginx
 ```
 
@@ -625,27 +663,19 @@ sudo systemctl show -p Wants nginx
 ### 32. Manage Service Boot Order
 
 ```bash
-# Show boot sequence
 systemd-analyze plot
-
-# Show service startup time
-systemd-analyze blame
-
-# Show critical chain
-systemd-analyze critical-chain
-
-# Show time spent on services
-systemd-analyze verify /etc/systemd/system/nginx.service
 ```
 
----
-
-## Comprehensive Monitoring Scripts
-
-### 33. Complete Service Monitoring (One-Liner)
+```bash
+systemd-analyze blame
+```
 
 ```bash
-{ echo "╔════════════════════════════════════════════════════════════╗"; echo "║         COMPLETE SERVICE STATUS REPORT                    ║"; echo "╚════════════════════════════════════════════════════════════╝"; echo ""; echo "[1] RUNNING SERVICES]"; sudo systemctl list-units --type=service --state=running --no-pager | awk 'NR>2 {print "  ✓", $1, $3}' | head -15; echo ""; echo "[2] FAILED SERVICES]"; sudo systemctl list-units --failed --no-pager 2>/dev/null | awk 'NR>2 {print "  ✗", $1}' || echo "  None"; echo ""; echo "[3] LISTENING PORTS]"; sudo ss -tlnp 2>/dev/null | awk 'NR>1 {print "  ", $4, $7}' | head -15; echo ""; echo "[4] TOP CPU SERVICES]"; ps aux --sort=-%cpu | grep -E 'nginx|mysql|php|redis' | head -5 | awk '{print "  ", $1, $3"%", $11}'; echo ""; echo "[5] TOP MEMORY SERVICES]"; ps aux --sort=-%mem | grep -E 'nginx|mysql|php|redis' | head -5 | awk '{print "  ", $1, $4"%", $11}'; echo ""; echo "[6] SERVICE DISK USAGE]"; du -sh /var/log/nginx /var/log/mysql /var/log/php* 2>/dev/null | awk '{print "  ", $2, $1}'; echo ""; echo "╚════════════════════════════════════════════════════════════╝"; } 2>&1 | tee /tmp/service_report_$(date +%Y%m%d_%H%M%S).log
+systemd-analyze critical-chain
+```
+
+```bash
+systemd-analyze verify /etc/systemd/system/nginx.service
 ```
 
 ---

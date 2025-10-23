@@ -15,7 +15,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://ddsh.boring9.dev',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -68,11 +68,22 @@ const config: Config = {
     ],
   ],
 
+  plugins: [],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
+    },
+    // Algolia search configuration
+    algolia: {
+      appId: 'SHSWX1XJKX',
+      apiKey: 'd2fc5b60911cd06beae408477d86b5b3',
+      indexName: 'dd-sh',
+      contextualSearch: true,
+      searchParameters: {},
+      searchPagePath: 'search',
     },
     navbar: {
       title: 'DD Documentation',

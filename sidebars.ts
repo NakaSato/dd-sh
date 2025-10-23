@@ -41,6 +41,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'datadog/index',
         'datadog/agent-proxy-configuration',
+        'datadog/openjdk-centos-monitoring',
         'datadog/datadog-proxy-testing',
         'datadog/ssl-certificate-configuration',
       ],
