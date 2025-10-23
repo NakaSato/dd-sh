@@ -7,47 +7,6 @@ sidebar_label: Datadog
 
 Complete guides for Datadog agent setup, configuration, and network connectivity testing with enterprise-grade monitoring.
 
-## Commands in This Section
-
-### 🔗 Datadog Proxy Testing
-Comprehensive network proxy testing guide for Datadog agents with 25+ diagnostic commands for DevOps environments.
-
-**Topics covered:**
-- Basic network connectivity testing
-- DNS resolution verification
-- Port connectivity checks
-- HTTP/SOCKS proxy configuration
-- Datadog API endpoint testing
-- Agent connectivity verification
-- Firewall and routing tests
-- SSL/TLS certificate validation
-- Proxy traffic monitoring
-- Performance and load testing
-- Automation and monitoring scripts
-- Troubleshooting common proxy issues
-
-**👉 [View Datadog Proxy Testing](./datadog-proxy-testing.md)**
-
----
-
-### 🛠️ Datadog CentOS Setup
-Complete Datadog Agent setup and configuration guide for CentOS systems with 50+ commands.
-
-**Topics covered:**
-- Agent installation procedures
-- Service management (start, stop, restart)
-- Configuration file setup
-- Integration enablement (Nginx, MySQL, PHP-FPM)
-- Log collection setup
-- Agent verification and testing
-- Connectivity testing to Datadog API
-- Troubleshooting procedures
-- Environment variable configuration
-- Application process monitoring
-- Complete diagnostic reports
-
-**👉 [View Datadog CentOS Setup](../linux/datadog-centos-setup.md)**
-
 ---
 
 ## Datadog Endpoints Reference
@@ -69,6 +28,7 @@ Complete Datadog Agent setup and configuration guide for CentOS systems with 50+
 ## Key Datadog Agent Configuration
 
 ### Basic Configuration
+
 ```yaml
 api_key: your_api_key_here
 site: datadoghq.com          # or datadoghq.eu
@@ -87,6 +47,7 @@ apm_config:
 ```
 
 ### Proxy Configuration
+
 ```yaml
 proxy:
   https: "http://proxy-server:8080"
@@ -101,6 +62,7 @@ proxy:
 ## Common Datadog Operations
 
 ### Agent Management
+
 ```bash
 sudo systemctl start datadog-agent       # Start agent
 sudo systemctl stop datadog-agent        # Stop agent
@@ -110,6 +72,7 @@ sudo systemctl enable datadog-agent      # Enable auto-start
 ```
 
 ### Testing & Verification
+
 ```bash
 sudo datadog-agent status                # Show agent status
 sudo datadog-agent diagnose              # Run diagnostics
@@ -118,6 +81,7 @@ sudo datadog-agent check nginx           # Test integration
 ```
 
 ### Logging
+
 ```bash
 sudo tail -f /var/log/datadog/agent.log          # Follow logs
 sudo grep -i error /var/log/datadog/agent.log    # Find errors
@@ -125,6 +89,7 @@ sudo journalctl -u datadog-agent -f              # System logs
 ```
 
 ### Connectivity Testing
+
 ```bash
 # Test API connectivity
 curl -s https://api.datadoghq.com/api/v1/validate \
@@ -152,18 +117,21 @@ nc -zv api.datadoghq.com 443
 ## Quick Troubleshooting
 
 ### Agent Not Starting
+
 ```bash
 sudo datadog-agent configcheck           # Check config syntax
 sudo journalctl -u datadog-agent -n 50   # View recent errors
 ```
 
 ### No Metrics Sending
+
 ```bash
 sudo grep "api_key" /etc/datadog-agent/datadog.yaml
 curl -s https://api.datadoghq.com -H "DD-API-KEY: test"
 ```
 
 ### Proxy Issues
+
 ```bash
 sudo tail -50 /var/log/datadog/agent.log | grep -i proxy
 curl -v -x http://proxy-server:8080 https://api.datadoghq.com

@@ -4,6 +4,11 @@
  * work well for content-centric websites.
  */
 
+/* Import Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;
@@ -13,7 +18,7 @@
   --ifm-color-primary-light: #33925d;
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
+  --ifm-code-font-size: 100%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
@@ -31,8 +36,9 @@
 
 /* Enhanced Code Block Styling */
 .prism-code {
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-family: 'Courier New', Courier, 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
+  font-size: 1rem;
+  line-height: 1.6;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -71,10 +77,11 @@
 
 /* Inline code styling */
 code {
+  font-family: 'Courier New', Courier, 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
   background: #f6f8fa;
   border: 1px solid #d1d9e0;
   border-radius: 3px;
-  font-size: 0.875em;
+  font-size: 0.95em;
   padding: 0.2em 0.4em;
 }
 
@@ -120,4 +127,14 @@ code {
 
 [data-theme='dark'] .prism-code::-webkit-scrollbar-thumb:hover {
   background: #777;
+}
+
+/* Monospace font for all code-related elements */
+pre,
+code,
+kbd,
+samp,
+.prism-code,
+.code-block-error-line {
+  font-family: 'Courier New', Courier, 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', monospace;
 }

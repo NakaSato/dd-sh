@@ -20,3 +20,4 @@ bun.lock
 .next
 out
 .vercel
+build
