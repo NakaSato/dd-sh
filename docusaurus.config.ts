@@ -135,13 +135,6 @@ const config: Config = {
           ],
         },
         {to: '/blog', label: 'Blog', position: 'left'},
-        {
-          href: 'https://github.com/NakaSato/dd-sh',
-          label: 'GitHub',
-          position: 'right',
-          target: '_blank',
-          rel: 'noopener noreferrer',
-        },
       ],
     },
     footer: {
