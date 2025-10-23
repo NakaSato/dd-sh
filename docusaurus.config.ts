@@ -9,6 +9,17 @@ const config: Config = {
   tagline: '',
   favicon: 'img/favicon.ico',
 
+  // Add Algolia site verification
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'algolia-site-verification',
+        content: '0330297108A6F31A',
+      },
+    },
+  ],
+
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
