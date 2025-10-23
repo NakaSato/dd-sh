@@ -114,15 +114,25 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '3d0'),
+    component: ComponentCreator('/docs', '79a'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', '5c1'),
+        component: ComponentCreator('/docs', 'e5b'),
         routes: [
           {
             path: '/docs/tags',
             component: ComponentCreator('/docs/tags', 'fce'),
+            exact: true
+          },
+          {
+            path: '/docs/tags/agent',
+            component: ComponentCreator('/docs/tags/agent', 'bcd'),
+            exact: true
+          },
+          {
+            path: '/docs/tags/centos',
+            component: ComponentCreator('/docs/tags/centos', 'eb0'),
             exact: true
           },
           {
@@ -163,6 +173,11 @@ export default [
           {
             path: '/docs/tags/services',
             component: ComponentCreator('/docs/tags/services', 'e32'),
+            exact: true
+          },
+          {
+            path: '/docs/tags/setup',
+            component: ComponentCreator('/docs/tags/setup', '12a'),
             exact: true
           },
           {

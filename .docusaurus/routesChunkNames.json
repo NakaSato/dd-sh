@@ -249,19 +249,27 @@
     },
     "content": "content---markdown-page-393-028"
   },
-  "/docs-3d0": {
+  "/docs-79a": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---docsaba-d7c"
     }
   },
-  "/docs-5c1": {
+  "/docs-e5b": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---docs-005-788"
   },
   "/docs/tags-fce": {
     "__comp": "__comp---theme-doc-tags-list-page-372-89e",
     "__props": "__props---docs-tags-898-65c"
+  },
+  "/docs/tags/agent-bcd": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "__props": "__props---docs-tags-agentd-55-bb0"
+  },
+  "/docs/tags/centos-eb0": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "__props": "__props---docs-tags-centos-776-db0"
   },
   "/docs/tags/datadog-1eb": {
     "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
@@ -294,6 +302,10 @@
   "/docs/tags/services-e32": {
     "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
     "__props": "__props---docs-tags-services-0-d-6-846"
+  },
+  "/docs/tags/setup-12a": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "__props": "__props---docs-tags-setupe-99-9bd"
   },
   "/docs/tags/systemctl-47b": {
     "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",

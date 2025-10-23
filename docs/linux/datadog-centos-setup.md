@@ -1,71 +1,80 @@
-------------
-
-sidebar_position: 2
-
-sidebar_label: "Datadog CentOS Setup"sidebar_position: 2
-
-description: "Datadog Agent setup commands for CentOS"
-
-tags: [datadog, centos, setup, agent]sidebar_label: "Datadog CentOS Setup"sidebar_position: 2sidebar_position: 2
-
 ---
-
-description: "Datadog Agent setup and configuration guide for CentOS systems"
+sidebar_position: 2
+sidebar_label: "Datadog CentOS Setup"
+description: "Complete Datadog Agent setup and configuration guide for CentOS systems"
+tags: [datadog, centos, setup, agent]
+---
 
 # Datadog CentOS Setup
 
-tags: [datadog, centos, agent, monitoring]sidebar_label: "Datadog CentOS Setup"sidebar_label: Datadog CentOS Setup
-
-Essential commands for installing and configuring the Datadog Agent on CentOS systems.
-
----
+Complete guide to installing, configuring, and managing Datadog Agent on CentOS systems.
 
 ## Installation
 
-description: "Complete Datadog Agent setup and configuration guide for CentOS systems"description: Complete Datadog Agent setup and configuration guide for CentOS systems
+### 1. Install Datadog Agent on CentOS
 
-### Install Datadog Agent
-# Datadog Platform Setup - CentOS
-### Enable and Start Agent## Installation
+For **Debian/Ubuntu**:
 
 ```bash
-sudo systemctl enable datadog-agent
-sudo systemctl start datadog-agent### Install Datadog Agent on CentOS
+DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=your_api_key_here DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_agent.sh)"
 ```
+
+For **CentOS/RHEL**, use YUM:
 
 ```bash
-sudo systemctl status datadog-agent```
+sudo yum install -y https://s3.amazonaws.com/dd-agent/scripts/install_agent.sh
 ```
 
-Complete guide to installing, configuring, and managing Datadog Agent on CentOS systems.Complete guide to installing, configuring, and managing Datadog Agent on CentOS systems with 50+ commands for different scenarios.
-
-### Restart Agent
-
-## Service Management
-
-```bash
-sudo systemctl restart datadog-agent
-```
-
-### Start Agent
-### Stop Agent
-## Installation Commands## Installation Commands
-
-```bash
-sudo systemctl stop datadog-agent```bash
-```
+### 2. Start Datadog Agent Service
 
 ```bash
 sudo systemctl start datadog-agent
 ```
 
-### View Agent Logs
+### 3. Enable Auto-start on Boot
+
 ```bash
 sudo systemctl enable datadog-agent
 ```
 
+## Service Management
+
+### Check Agent Status
+
 ```bash
-sudo tail -f /var/log/datadog/agent.log```### 1. Install Datadog Agent on CentOS### 1. Install Datadog Agent on CentOS
+sudo systemctl status datadog-agent
+```
+
+### Restart Agent
+
+```bash
+sudo systemctl restart datadog-agent
+```
+
+### Stop Agent
+
+```bash
+sudo systemctl stop datadog-agent
+```
+
+### Restart All Agent Services
+
+```bash
+sudo systemctl restart datadog-agent datadog-agent-trace datadog-agent-process
+```
+
+## Configuration
+
+### 4. Edit Datadog Agent Configuration
+
+```bash
+sudo nano /etc/datadog-agent/datadog.yaml
+```
+
+### View Agent Logs
+
+```bash
+sudo tail -f /var/log/datadog/agent.log
 ```
 
 ```bash
