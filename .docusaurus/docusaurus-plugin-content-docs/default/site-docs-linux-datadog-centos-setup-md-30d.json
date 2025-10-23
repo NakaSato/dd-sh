@@ -14,8 +14,8 @@
   "frontMatter": {},
   "sidebar": "tutorialSidebar",
   "previous": {
-    "title": "oneline-commands",
-    "permalink": "/docs/linux/oneline-commands"
+    "title": "Linux Commands",
+    "permalink": "/docs/linux/"
   },
   "next": {
     "title": "Services",

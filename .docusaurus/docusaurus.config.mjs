@@ -103,176 +103,101 @@ export default {
       "hideOnScroll": false
     },
     "footer": {
-      "style": "dark",
-      "links": [
-        {
-          "title": "Docs",
-          "items": [
-            {
-              "label": "Tutorial",
-              "to": "/docs/intro"
-            }
-          ]
-        },
-        {
-          "title": "Community",
-          "items": [
-            {
-              "label": "Stack Overflow",
-              "href": "https://stackoverflow.com/questions/tagged/docusaurus"
-            },
-            {
-              "label": "Discord",
-              "href": "https://discordapp.com/invite/docusaurus"
-            },
-            {
-              "label": "X",
-              "href": "https://x.com/docusaurus"
-            }
-          ]
-        },
-        {
-          "title": "More",
-          "items": [
-            {
-              "label": "Blog",
-              "to": "/blog"
-            },
-            {
-              "label": "GitHub",
-              "href": "https://github.com/facebook/docusaurus"
-            }
-          ]
-        }
-      ],
-      "copyright": "Copyright © 2025 My Project, Inc. Built with Docusaurus."
+      "style": "light",
+      "copyright": "Copyright © 2025.",
+      "links": []
     },
     "prism": {
       "theme": {
         "plain": {
-          "color": "#393A34",
-          "backgroundColor": "#f6f8fa"
+          "backgroundColor": "hsl(230, 1%, 98%)",
+          "color": "hsl(230, 8%, 24%)"
         },
         "styles": [
           {
             "types": [
               "comment",
               "prolog",
-              "doctype",
               "cdata"
             ],
             "style": {
-              "color": "#999988",
-              "fontStyle": "italic"
+              "color": "hsl(230, 4%, 64%)"
             }
           },
           {
             "types": [
-              "namespace"
-            ],
-            "style": {
-              "opacity": 0.7
-            }
-          },
-          {
-            "types": [
-              "string",
-              "attr-value"
-            ],
-            "style": {
-              "color": "#e3116c"
-            }
-          },
-          {
-            "types": [
+              "doctype",
               "punctuation",
-              "operator"
+              "entity"
             ],
             "style": {
-              "color": "#393A34"
+              "color": "hsl(230, 8%, 24%)"
             }
           },
           {
             "types": [
-              "entity",
-              "url",
-              "symbol",
-              "number",
-              "boolean",
-              "variable",
-              "constant",
-              "property",
-              "regex",
-              "inserted"
-            ],
-            "style": {
-              "color": "#36acaa"
-            }
-          },
-          {
-            "types": [
-              "atrule",
-              "keyword",
               "attr-name",
-              "selector"
+              "class-name",
+              "boolean",
+              "constant",
+              "number",
+              "atrule"
             ],
             "style": {
-              "color": "#00a4db"
+              "color": "hsl(35, 99%, 36%)"
             }
           },
           {
             "types": [
-              "function",
-              "deleted",
-              "tag"
-            ],
-            "style": {
-              "color": "#d73a49"
-            }
-          },
-          {
-            "types": [
-              "function-variable"
-            ],
-            "style": {
-              "color": "#6f42c1"
-            }
-          },
-          {
-            "types": [
-              "tag",
-              "selector",
               "keyword"
             ],
             "style": {
-              "color": "#00009f"
-            }
-          }
-        ]
-      },
-      "darkTheme": {
-        "plain": {
-          "color": "#F8F8F2",
-          "backgroundColor": "#282A36"
-        },
-        "styles": [
-          {
-            "types": [
-              "prolog",
-              "constant",
-              "builtin"
-            ],
-            "style": {
-              "color": "rgb(189, 147, 249)"
+              "color": "hsl(301, 63%, 40%)"
             }
           },
           {
             "types": [
+              "property",
+              "tag",
+              "symbol",
+              "deleted",
+              "important"
+            ],
+            "style": {
+              "color": "hsl(5, 74%, 59%)"
+            }
+          },
+          {
+            "types": [
+              "selector",
+              "string",
+              "char",
+              "builtin",
               "inserted",
+              "regex",
+              "attr-value",
+              "punctuation"
+            ],
+            "style": {
+              "color": "hsl(119, 34%, 47%)"
+            }
+          },
+          {
+            "types": [
+              "variable",
+              "operator",
               "function"
             ],
             "style": {
-              "color": "rgb(80, 250, 123)"
+              "color": "hsl(221, 87%, 60%)"
+            }
+          },
+          {
+            "types": [
+              "url"
+            ],
+            "style": {
+              "color": "hsl(198, 99%, 37%)"
             }
           },
           {
@@ -280,66 +205,187 @@ export default {
               "deleted"
             ],
             "style": {
-              "color": "rgb(255, 85, 85)"
+              "textDecorationLine": "line-through"
             }
           },
           {
             "types": [
-              "changed"
+              "inserted"
             ],
             "style": {
-              "color": "rgb(255, 184, 108)"
+              "textDecorationLine": "underline"
             }
           },
           {
             "types": [
-              "punctuation",
-              "symbol"
+              "italic"
             ],
             "style": {
-              "color": "rgb(248, 248, 242)"
-            }
-          },
-          {
-            "types": [
-              "string",
-              "char",
-              "tag",
-              "selector"
-            ],
-            "style": {
-              "color": "rgb(255, 121, 198)"
-            }
-          },
-          {
-            "types": [
-              "keyword",
-              "variable"
-            ],
-            "style": {
-              "color": "rgb(189, 147, 249)",
               "fontStyle": "italic"
             }
           },
           {
             "types": [
-              "comment"
+              "important",
+              "bold"
             ],
             "style": {
-              "color": "rgb(98, 114, 164)"
+              "fontWeight": "bold"
             }
           },
           {
             "types": [
-              "attr-name"
+              "important"
             ],
             "style": {
-              "color": "rgb(241, 250, 140)"
+              "color": "hsl(230, 8%, 24%)"
             }
           }
         ]
       },
-      "additionalLanguages": [],
+      "darkTheme": {
+        "plain": {
+          "backgroundColor": "hsl(220, 13%, 18%)",
+          "color": "hsl(220, 14%, 71%)",
+          "textShadow": "0 1px rgba(0, 0, 0, 0.3)"
+        },
+        "styles": [
+          {
+            "types": [
+              "comment",
+              "prolog",
+              "cdata"
+            ],
+            "style": {
+              "color": "hsl(220, 10%, 40%)"
+            }
+          },
+          {
+            "types": [
+              "doctype",
+              "punctuation",
+              "entity"
+            ],
+            "style": {
+              "color": "hsl(220, 14%, 71%)"
+            }
+          },
+          {
+            "types": [
+              "attr-name",
+              "class-name",
+              "maybe-class-name",
+              "boolean",
+              "constant",
+              "number",
+              "atrule"
+            ],
+            "style": {
+              "color": "hsl(29, 54%, 61%)"
+            }
+          },
+          {
+            "types": [
+              "keyword"
+            ],
+            "style": {
+              "color": "hsl(286, 60%, 67%)"
+            }
+          },
+          {
+            "types": [
+              "property",
+              "tag",
+              "symbol",
+              "deleted",
+              "important"
+            ],
+            "style": {
+              "color": "hsl(355, 65%, 65%)"
+            }
+          },
+          {
+            "types": [
+              "selector",
+              "string",
+              "char",
+              "builtin",
+              "inserted",
+              "regex",
+              "attr-value"
+            ],
+            "style": {
+              "color": "hsl(95, 38%, 62%)"
+            }
+          },
+          {
+            "types": [
+              "variable",
+              "operator",
+              "function"
+            ],
+            "style": {
+              "color": "hsl(207, 82%, 66%)"
+            }
+          },
+          {
+            "types": [
+              "url"
+            ],
+            "style": {
+              "color": "hsl(187, 47%, 55%)"
+            }
+          },
+          {
+            "types": [
+              "deleted"
+            ],
+            "style": {
+              "textDecorationLine": "line-through"
+            }
+          },
+          {
+            "types": [
+              "inserted"
+            ],
+            "style": {
+              "textDecorationLine": "underline"
+            }
+          },
+          {
+            "types": [
+              "italic"
+            ],
+            "style": {
+              "fontStyle": "italic"
+            }
+          },
+          {
+            "types": [
+              "important",
+              "bold"
+            ],
+            "style": {
+              "fontWeight": "bold"
+            }
+          },
+          {
+            "types": [
+              "important"
+            ],
+            "style": {
+              "color": "hsl(220, 14%, 71%)"
+            }
+          }
+        ]
+      },
+      "additionalLanguages": [
+        "bash",
+        "yaml",
+        "json",
+        "docker",
+        "nginx"
+      ],
       "magicComments": [
         {
           "className": "theme-code-block-highlighted-line",
@@ -348,6 +394,10 @@ export default {
             "start": "highlight-start",
             "end": "highlight-end"
           }
+        },
+        {
+          "className": "code-block-error-line",
+          "line": "error-next-line"
         }
       ]
     },

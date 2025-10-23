@@ -114,11 +114,11 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', 'd04'),
+    component: ComponentCreator('/docs', '3d0'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', 'b84'),
+        component: ComponentCreator('/docs', '5c1'),
         routes: [
           {
             path: '/docs/tags',
@@ -182,7 +182,7 @@ export default [
           },
           {
             path: '/docs',
-            component: ComponentCreator('/docs', 'a16'),
+            component: ComponentCreator('/docs', '3dc'),
             routes: [
               {
                 path: '/docs/datadog/',
@@ -221,9 +221,8 @@ export default [
               },
               {
                 path: '/docs/linux/oneline-commands',
-                component: ComponentCreator('/docs/linux/oneline-commands', '59d'),
-                exact: true,
-                sidebar: "tutorialSidebar"
+                component: ComponentCreator('/docs/linux/oneline-commands', '9c1'),
+                exact: true
               },
               {
                 path: '/docs/services/',

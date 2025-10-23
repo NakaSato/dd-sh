@@ -21,7 +21,6 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'linux/index',
-        'linux/oneline-commands',
         'linux/datadog-centos-setup',
       ],
     },

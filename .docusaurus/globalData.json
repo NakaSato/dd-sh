@@ -41,8 +41,7 @@
             },
             {
               "id": "linux/oneline-commands",
-              "path": "/docs/linux/oneline-commands",
-              "sidebar": "tutorialSidebar"
+              "path": "/docs/linux/oneline-commands"
             },
             {
               "id": "services/index",

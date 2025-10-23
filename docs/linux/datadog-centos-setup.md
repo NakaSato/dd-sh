@@ -25,49 +25,16 @@ Essential commands for installing and configuring the Datadog Agent on CentOS sy
 description: "Complete Datadog Agent setup and configuration guide for CentOS systems"description: Complete Datadog Agent setup and configuration guide for CentOS systems
 
 ### Install Datadog Agent
-
 # Datadog Platform Setup - CentOS
-
-```bash
-
-DD_AGENT_MAJOR_VERSION=7 \tags: [datadog, centos, agent, monitoring, installation, configuration, logs]tags: [datadog, centos, agent, monitoring, installation, configuration, logs]
-
-DD_API_KEY=YOUR_API_KEY \
-
-DD_SITE="datadoghq.com" \Complete guide to installing and managing Datadog Agent on CentOS.
-
-bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_script.sh)"
-
-```------
-
-
-
 ### Enable and Start Agent## Installation
 
-
-
 ```bash
-
 sudo systemctl enable datadog-agent
-
 sudo systemctl start datadog-agent### Install Datadog Agent on CentOS
-
 ```
 
-# Datadog Platform Setup & Commands for CentOS# Datadog Platform Setup & Commands for CentOS
-
-## Service Management
-
 ```bash
-
-### Check Agent Status
-
-DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=your_api_key DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_agent.sh)"
-
-```bash
-
 sudo systemctl status datadog-agent```
-
 ```
 
 Complete guide to installing, configuring, and managing Datadog Agent on CentOS systems.Complete guide to installing, configuring, and managing Datadog Agent on CentOS systems with 50+ commands for different scenarios.
@@ -77,91 +44,54 @@ Complete guide to installing, configuring, and managing Datadog Agent on CentOS 
 ## Service Management
 
 ```bash
-
 sudo systemctl restart datadog-agent
-
 ```
 
 ### Start Agent
-
 ### Stop Agent
-
 ## Installation Commands## Installation Commands
 
 ```bash
-
 sudo systemctl stop datadog-agent```bash
-
 ```
 
+```bash
 sudo systemctl start datadog-agent
+```
 
 ### View Agent Logs
-
+```bash
 sudo systemctl enable datadog-agent
+```
 
 ```bash
-
 sudo tail -f /var/log/datadog/agent.log```### 1. Install Datadog Agent on CentOS### 1. Install Datadog Agent on CentOS
-
 ```
-
-
-
-## Configuration
-
-### Check Status
-
-### Set Datadog API Key
-
-
 
 ```bash
-
-sudo sed -i 's/# api_key:.*/api_key: YOUR_API_KEY/' /etc/datadog-agent/datadog.yaml```bash```bash---```bash
-
+sudo sed -i 's/# site:.*/site: datadoghq.com/' /etc/datadog-agent/datadog.yaml
 ```
-
-sudo systemctl status datadog-agent
-
-### Set Datadog Site
-
-sudo datadog-agent statusDD_AGENT_MAJOR_VERSION=7 DD_API_KEY=your_api_key_here DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_agent.sh)"
-
-```bash
-
-sudo sed -i 's/# site:.*/site: datadoghq.com/' /etc/datadog-agent/datadog.yaml```
-
-```
-
-```DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=your_api_key_here DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_agent.sh)"
 
 ### Enable Logs Collection
-
 ### View Logs
 
 ```bash
-
 sudo sed -i 's/# logs_enabled: false/logs_enabled: true/' /etc/datadog-agent/datadog.yaml
+```
 
+```bash
 sudo systemctl restart datadog-agent
-
-``````bash
-
+```
 
 
 ### Enable Process Agentsudo tail -f /var/log/datadog/agent.log**Explanation**:# Datadog Platform Setup & Commands for CentOS```
-
-
-
-```bash```
-
+```bash
 sudo sed -i 's/# enabled: false/enabled: true/' /etc/datadog-agent/conf.d/process.d/conf.yaml
-
-sudo systemctl restart datadog-agent- `DD_AGENT_MAJOR_VERSION=7` - Specifies Datadog Agent version 7
-
 ```
 
+```bash
+sudo systemctl restart datadog-agent- `DD_AGENT_MAJOR_VERSION=7` - Specifies Datadog Agent version 7
+```
 ## Configuration
 
 ## Agent Diagnostics
@@ -173,21 +103,11 @@ sudo systemctl restart datadog-agent- `DD_AGENT_MAJOR_VERSION=7` - Specifies Dat
 ### Edit Config
 
 ```bash
-
 sudo datadog-agent version- `DD_SITE="datadoghq.com"` - Datadog site (US), use `datadoghq.eu` for EU
-
 ```
 
 ```bash
-
-### List Active Checks
-
-sudo nano /etc/datadog-agent/datadog.yaml- `bash -c "$(curl -L ...)"` - Downloads and executes the installation scriptComplete guide to installing, configuring, and managing Datadog Agent on CentOS systems with 50+ commands for different scenarios.**Explanation**:
-
-```bash
-
 sudo datadog-agent check --list```
-
 ```
 
 
@@ -294,15 +214,15 @@ sudo usermod -a -G adm dd-agent## Related Documentation
 
 ### View Recent Agent Logs
 
-- [One-Line Bash Commands](./oneline-commands.md)**Related Commands**:DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=your_api_key_here DD_SITE="datadoghq.com" bash -c "$(curl -L https://s3.amazonaws.com/dd-agent/scripts/install_agent.sh)"
-
 ```bash
-
-sudo tail -50 /var/log/datadog/agent.log | grep -i error- [Service Check Commands](../services/service-check-commands.md)
-
+sudo tail -50 /var/log/datadog/agent.log | grep -i error
 ```
 
-- [Datadog Proxy Testing](../datadog/datadog-proxy-testing.md)```bash
+## Related Commands
+
+- [One-Line Bash Commands](./oneline-commands.md) - Essential Linux one-liners
+- [Service Check Commands](../services/service-check-commands.md) - systemctl management  
+- [Datadog Proxy Testing](../datadog/datadog-proxy-testing.md) - Network diagnostics
 
 ### Restart All Agent Services
 
