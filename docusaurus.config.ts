@@ -9,17 +9,6 @@ const config: Config = {
   tagline: '',
   favicon: 'img/favicon.ico',
 
-  // Add Algolia site verification
-  headTags: [
-    {
-      tagName: 'meta',
-      attributes: {
-        name: 'algolia-site-verification',
-        content: '0330297108A6F31A',
-      },
-    },
-  ],
-
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
@@ -79,22 +68,28 @@ const config: Config = {
     ],
   ],
 
-  plugins: [],
+  plugins: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        language: ['en'],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        searchBarShortcut: true,
+        searchBarShortcutHint: true,
+        searchBarPosition: 'right',
+        docsRouteBasePath: '/docs',
+        blogRouteBasePath: '/blog',
+      },
+    ],
+  ],
 
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       respectPrefersColorScheme: true,
-    },
-    // Algolia search configuration
-    algolia: {
-      appId: 'SHSWX1XJKX',
-      apiKey: 'a4f0b5f97a7d1295a453088c84c8fa89',
-      indexName: 'dd-sh',
-      contextualSearch: true,
-      searchParameters: {},
-      searchPagePath: 'search',
     },
     navbar: {
       title: 'DD Documentation',

@@ -238,3 +238,169 @@ samp,
     font-size: 0.95rem;
   }
 }
+
+/* Enhanced Search Bar Styling */
+.aa-Form {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(10px) !important;
+  transition: all 0.3s ease !important;
+  min-width: 280px !important;
+}
+
+.aa-Form:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(46, 133, 85, 0.5) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.aa-Form:focus-within {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: #2e8555 !important;
+  box-shadow: 0 0 0 2px rgba(46, 133, 85, 0.2) !important;
+}
+
+.aa-InputWrapper {
+  background: transparent !important;
+}
+
+.aa-Input {
+  background: transparent !important;
+  color: #fff !important;
+  font-family: 'National', sans-serif !important;
+  font-size: 0.9rem !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.aa-Input::placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 400 !important;
+}
+
+.aa-SubmitButton,
+.aa-LoadingIndicator {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.aa-ClearButton {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.aa-ClearButton:hover {
+  color: #fff !important;
+}
+
+/* Search Results Panel */
+.aa-Panel {
+  background: #1a1f2e !important;
+  border: 1px solid #30363d !important;
+  border-radius: 8px !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3) !important;
+  margin-top: 8px !important;
+}
+
+.aa-PanelLayout {
+  background: transparent !important;
+}
+
+.aa-Source {
+  background: transparent !important;
+}
+
+.aa-SourceHeader {
+  background: transparent !important;
+  color: #2e8555 !important;
+  font-family: 'National', sans-serif !important;
+  font-weight: 600 !important;
+  border-bottom: 1px solid #30363d !important;
+  padding: 12px 16px !important;
+}
+
+.aa-Item {
+  background: transparent !important;
+  border-radius: 6px !important;
+  margin: 4px 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.aa-Item:hover,
+.aa-Item[aria-selected="true"] {
+  background: rgba(46, 133, 85, 0.1) !important;
+  border: 1px solid rgba(46, 133, 85, 0.3) !important;
+}
+
+.aa-ItemWrapper {
+  padding: 12px !important;
+}
+
+.aa-ItemContent {
+  color: #e0e0e0 !important;
+  font-family: 'National', sans-serif !important;
+}
+
+.aa-ItemContentTitle {
+  color: #fff !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  margin-bottom: 4px !important;
+}
+
+.aa-ItemContentDescription {
+  color: rgba(224, 224, 224, 0.8) !important;
+  font-size: 0.85rem !important;
+  line-height: 1.4 !important;
+}
+
+/* Search Keyboard Shortcut Hint */
+.aa-DetachedSearchButton {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-family: 'National', sans-serif !important;
+  transition: all 0.3s ease !important;
+}
+
+.aa-DetachedSearchButton:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(46, 133, 85, 0.5) !important;
+}
+
+.aa-DetachedSearchButtonIcon {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.aa-DetachedSearchButtonPlaceholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Mobile Search Optimizations */
+@media (max-width: 768px) {
+  .aa-Form {
+    min-width: 240px !important;
+  }
+  
+  .aa-Panel {
+    max-width: calc(100vw - 32px) !important;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+  }
+}
+
+/* Dark Mode Adjustments */
+[data-theme='dark'] .aa-Form {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme='dark'] .aa-Form:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(46, 133, 85, 0.4) !important;
+}
+
+[data-theme='dark'] .aa-Panel {
+  background: #161b22 !important;
+  border-color: #21262d !important;
+}
