@@ -90,7 +90,7 @@ const config: Config = {
     // Algolia search configuration
     algolia: {
       appId: 'SHSWX1XJKX',
-      apiKey: 'd2fc5b60911cd06beae408477d86b5b3',
+      apiKey: 'a4f0b5f97a7d1295a453088c84c8fa89',
       indexName: 'dd-sh',
       contextualSearch: true,
       searchParameters: {},
