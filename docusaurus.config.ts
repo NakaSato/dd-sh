@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'DD-SH',
+  tagline: '',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -75,23 +75,50 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: 'DD Documentation',
+      hideOnScroll: false,
+      style: 'dark',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'DD Logo',
         src: 'img/logo.svg',
+        srcDark: 'img/logo.svg',
+        height: 32,
+        width: 32,
       },
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Documentation',
+        },
+        {
+          label: 'Resources',
+          position: 'left',
+          items: [
+            {
+              label: 'Datadog Official Docs',
+              href: 'https://docs.datadoghq.com',
+              target: '_blank',
+            },
+            {
+              label: 'Datadog Agent',
+              href: 'https://docs.datadoghq.com/agent/',
+              target: '_blank',
+            },
+            {
+              label: 'Linux Commands',
+              to: '/docs/linux/oneline-commands',
+            },
+          ],
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/NakaSato/dd-sh',
           label: 'GitHub',
           position: 'right',
+          target: '_blank',
+          rel: 'noopener noreferrer',
         },
       ],
     },

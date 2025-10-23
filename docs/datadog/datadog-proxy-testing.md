@@ -516,30 +516,6 @@ sudo lsof -p $(pgrep -f datadog-agent) -i
 
 ## Complete Proxy Testing Commands
 
-### 16. Quick Proxy Connection Test (One-Liner)
-
-```bash
-echo "=== PROXY TEST ===" && timeout 5 nc -zv proxy-server 8080 && echo "✓ Proxy reachable" || echo "✗ Proxy unreachable" && echo "" && echo "=== DATADOG API TEST ===" && curl -s -m 5 -x http://proxy-server:8080 https://api.datadoghq.com/api/v1/validate -H "DD-API-KEY: ${DD_API_KEY:-test}" && echo "✓ Datadog reachable through proxy" || echo "✗ Datadog unreachable through proxy"
-```
-
----
-
-### 17. Full Proxy and Datadog Connectivity Test (One-Liner)
-
-```bash
-{ echo "╔═════════════════════════════════════════════════════════╗"; echo "║     PROXY & DATADOG CONNECTIVITY TEST                   ║"; echo "╚═════════════════════════════════════════════════════════╝"; echo ""; echo "[1] DNS RESOLUTION]"; for host in api.datadoghq.com trace.datadoghq.com logs.datadoghq.com; do nslookup $host 8.8.8.8 2>&1 | grep -E "Name:|Address:" | head -2; done; echo ""; echo "[2] PROXY CONNECTIVITY]"; timeout 5 nc -zv proxy-server 8080 2>&1 | grep -o "succeeded\|Connection refused"; echo ""; echo "[3] DATADOG API (Direct)]"; curl -s -m 5 https://api.datadoghq.com/api/v1/validate -H "DD-API-KEY: test" -w "\nHTTP: %{http_code}\n" | tail -2; echo ""; echo "[4] DATADOG API (Via Proxy)]"; curl -s -m 5 -x http://proxy-server:8080 https://api.datadoghq.com/api/v1/validate -H "DD-API-KEY: test" -w "\nHTTP: %{http_code}\n" | tail -2; echo ""; echo "[5] AGENT STATUS]"; sudo datadog-agent status 2>/dev/null | head -5 || echo "Agent not running"; echo ""; echo "[6] CERTIFICATE CHECK]"; echo | openssl s_client -connect api.datadoghq.com:443 2>/dev/null | grep "subject=" | head -1; echo ""; echo "╚═════════════════════════════════════════════════════════╝"; } 2>&1 | tee /tmp/proxy_test_$(date +%Y%m%d_%H%M%S).log
-```
-
----
-
-### 18. Comprehensive Proxy Diagnostics (One-Liner)
-
-```bash
-{ echo "╔════════════════════════════════════════════════════════════════╗"; echo "║         COMPREHENSIVE PROXY DIAGNOSTICS REPORT                ║"; echo "╚════════════════════════════════════════════════════════════════╝"; echo ""; echo "[1] SYSTEM NETWORK]"; echo "  Interfaces: $(ip link show | grep "^[0-9]" | wc -l)"; echo "  Gateway: $(ip route show | grep default | awk '{print $3}')"; echo "  DNS: $(cat /etc/resolv.conf | grep nameserver | head -1)"; echo ""; echo "[2] PROXY CONFIGURATION]"; echo "  HTTP_PROXY: ${HTTP_PROXY:-Not set}"; echo "  HTTPS_PROXY: ${HTTPS_PROXY:-Not set}"; echo "  NO_PROXY: ${NO_PROXY:-Not set}"; echo ""; echo "[3] PROXY REACHABILITY]"; for proxy_host in ${HTTP_PROXY##*//} ${HTTPS_PROXY##*//}; do proxy_addr=${proxy_host%:*}; proxy_port=${proxy_host##*:}; timeout 3 nc -zv $proxy_addr $proxy_port 2>&1 | grep -q "succeeded" && echo "  ✓ Proxy $proxy_host: OK" || echo "  ✗ Proxy $proxy_host: FAILED"; done; echo ""; echo "[4] DATADOG ENDPOINTS]"; for endpoint in api.datadoghq.com trace.datadoghq.com logs.datadoghq.com; do timeout 3 bash -c '</dev/tcp/'$endpoint'/443' 2>/dev/null && echo "  ✓ $endpoint: Reachable" || echo "  ✗ $endpoint: Unreachable"; done; echo ""; echo "[5] AGENT CONFIGURATION]"; echo "  Config file: /etc/datadog-agent/datadog.yaml"; sudo grep -E "^proxy:|https:|http:|no_proxy:" /etc/datadog-agent/datadog.yaml 2>/dev/null | sed 's/^/  /' || echo "  No proxy configured"; echo ""; echo "[6] AGENT STATUS]"; sudo systemctl is-active datadog-agent >/dev/null 2>&1 && echo "  ✓ Agent running" || echo "  ✗ Agent stopped"; echo ""; echo "[7] RECENT AGENT ERRORS]"; sudo journalctl -u datadog-agent -n 5 -p err 2>/dev/null | sed 's/^/  /' || echo "  No recent errors"; echo ""; echo "╚════════════════════════════════════════════════════════════════╝"; } 2>&1 | tee /tmp/proxy_diagnostics_$(date +%Y%m%d_%H%M%S).log
-```
-
----
-
 ## Proxy Environment Variables
 
 ### 19. Set and Verify Proxy Environment Variables

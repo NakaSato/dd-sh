@@ -21,12 +21,13 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'linux/index',
+        'linux/oneline-commands',
         'linux/datadog-centos-setup',
       ],
     },
     {
       type: 'category',
-      label: 'Services',
+      label: 'Services Management',
       collapsed: false,
       items: [
         'services/index',
@@ -35,11 +36,13 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: 'Datadog',
+      label: 'Datadog Integration',
       collapsed: false,
       items: [
         'datadog/index',
+        'datadog/agent-proxy-configuration',
         'datadog/datadog-proxy-testing',
+        'datadog/ssl-certificate-configuration',
       ],
     },
   ],
