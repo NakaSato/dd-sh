@@ -249,13 +249,13 @@
     },
     "content": "content---markdown-page-393-028"
   },
-  "/docs-79a": {
+  "/docs-049": {
     "__comp": "__comp---theme-docs-root-5-e-9-0b6",
     "__context": {
       "plugin": "plugin---docsaba-d7c"
     }
   },
-  "/docs-e5b": {
+  "/docs-f2f": {
     "__comp": "__comp---theme-doc-version-roota-7-b-5de",
     "__props": "__props---docs-005-788"
   },
@@ -267,9 +267,21 @@
     "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
     "__props": "__props---docs-tags-agentd-55-bb0"
   },
+  "/docs/tags/automation-81d": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "__props": "__props---docs-tags-automation-720-923"
+  },
+  "/docs/tags/bash-b6a": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "__props": "__props---docs-tags-bashce-7-7d5"
+  },
   "/docs/tags/centos-eb0": {
     "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
     "__props": "__props---docs-tags-centos-776-db0"
+  },
+  "/docs/tags/commands-ea6": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "__props": "__props---docs-tags-commandsa-10-f9b"
   },
   "/docs/tags/datadog-1eb": {
     "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
@@ -290,6 +302,10 @@
   "/docs/tags/networking-49a": {
     "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
     "__props": "__props---docs-tags-networking-1-a-0-81d"
+  },
+  "/docs/tags/one-liners-85f": {
+    "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",
+    "__props": "__props---docs-tags-one-linersa-72-ec2"
   },
   "/docs/tags/proxy-d00": {
     "__comp": "__comp---theme-doc-tag-doc-list-pagedf-2-9f0",

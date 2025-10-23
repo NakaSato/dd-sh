@@ -2,6 +2,7 @@
   "name": "my-docusaurus",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "bun@1.1.29",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
@@ -27,6 +28,7 @@
     "@docusaurus/module-type-aliases": "3.9.2",
     "@docusaurus/tsconfig": "3.9.2",
     "@docusaurus/types": "3.9.2",
+    "@tailwindcss/postcss": "^4.1.16",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.16",
@@ -43,8 +45,5 @@
       "last 3 firefox version",
       "last 5 safari version"
     ]
-  },
-  "engines": {
-    "node": ">=22.0.0"
   }
 }

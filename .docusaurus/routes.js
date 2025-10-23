@@ -114,11 +114,11 @@ export default [
   },
   {
     path: '/docs',
-    component: ComponentCreator('/docs', '79a'),
+    component: ComponentCreator('/docs', '049'),
     routes: [
       {
         path: '/docs',
-        component: ComponentCreator('/docs', 'e5b'),
+        component: ComponentCreator('/docs', 'f2f'),
         routes: [
           {
             path: '/docs/tags',
@@ -131,8 +131,23 @@ export default [
             exact: true
           },
           {
+            path: '/docs/tags/automation',
+            component: ComponentCreator('/docs/tags/automation', '81d'),
+            exact: true
+          },
+          {
+            path: '/docs/tags/bash',
+            component: ComponentCreator('/docs/tags/bash', 'b6a'),
+            exact: true
+          },
+          {
             path: '/docs/tags/centos',
             component: ComponentCreator('/docs/tags/centos', 'eb0'),
+            exact: true
+          },
+          {
+            path: '/docs/tags/commands',
+            component: ComponentCreator('/docs/tags/commands', 'ea6'),
             exact: true
           },
           {
@@ -158,6 +173,11 @@ export default [
           {
             path: '/docs/tags/networking',
             component: ComponentCreator('/docs/tags/networking', '49a'),
+            exact: true
+          },
+          {
+            path: '/docs/tags/one-liners',
+            component: ComponentCreator('/docs/tags/one-liners', '85f'),
             exact: true
           },
           {

@@ -1,53 +1,30 @@
-------
-
-sidebar_position: 1sidebar_position: 1
-
-sidebar_label: "One-Line Bash Commands"sidebar_label: One-Line Bash Commands
-
-description: "Essential one-liner bash commands for Linux system administration and DevOps tasks"description: Essential one-liner bash commands for Linux system administration and DevOps tasks
-
-tags: [bash, commands, linux, one-liners, automation]tags: [bash, commands, linux, one-liners, automation]
-
-------
-
-
+---
+sidebar_position: 1
+sidebar_label: "One-Line Bash Commands"
+description: "Essential one-liner bash commands for Linux system administration and DevOps tasks"
+tags: [bash, commands, linux, one-liners, automation]
+---
 
 # One-Line Bash Commands# One-Line Bash Commands
 
-
-
 Essential bash one-liners for common DevOps and system administration tasks. Each command is designed to be typed and executed in a single line, with explanations of each component.Essential bash one-liners for common DevOps and system administration tasks. Each command is designed to be typed and executed in a single line, with explanations of each component.
-
-
 
 ## Command 1: Find and Remove Large Files## Command 1: Find and Remove Large Files
 
-
-
-```bash```bash
+```bash
 
 find . -type f -size +100M -exec rm -i {} \;
 
 ```
 
-
-
 ### Explanation# One-Line Bash Commands### Explanation
 
 - **`find .`** - Search from the current directory
-
 - **`-type f`** - Only look for files (not directories)- **`find .`** - Search from the current directory
-
 - **`-size +100M`** - Find files larger than 100 megabytes
-
 - **`-exec rm -i {} \;`** - Execute `rm -i` (interactive remove) on each file foundEssential bash one-liners for common DevOps and system administration tasks. Each command is designed to be typed and executed in a single line, with explanations of each component.- **`-type f`** - Only look for files (not directories)
-
 - **`{}`** - Placeholder for the filename
-
 - **`\;`** - Terminates the exec command- **`-size +100M`** - Find files larger than 100 megabytes
-
-
-
 **Use Case**: Clean up disk space by finding and removing large files interactively## Command 1: Find and Remove Large Files- **`-exec rm -i {} \;`** - Execute `rm -i` (interactive remove) on each file found
 
 

@@ -21,20 +21,27 @@ curl -s -I https://api.datadoghq.com/api/v1/validate
 
 ### 2. Test DNS Resolution for Datadog
 
+Test DNS resolution:
+
 ```bash
-# Test DNS resolution
 nslookup api.datadoghq.com
 ```
+
+Test DNS with specific nameserver (Google):
+
 ```bash
-# Test DNS with specific nameserver (Google)
 nslookup api.datadoghq.com 8.8.8.8
 ```
+
+Use dig for detailed DNS info:
+
 ```bash
-# Use dig for detailed DNS info
 dig api.datadoghq.com
 ```
+
+Check DNS resolver configuration:
+
 ```bash
-# Check DNS resolver configuration
 cat /etc/resolv.conf
 ```
 
@@ -42,16 +49,21 @@ cat /etc/resolv.conf
 
 ### 3. Test Port Connectivity
 
+Test HTTPS port (443):
+
 ```bash
-# Test HTTPS port (443)
 nc -zv api.datadoghq.com 443
 ```
+
+Use telnet (if available):
+
 ```bash
-# Use telnet (if available)
 telnet api.datadoghq.com 443
 ```
+
+Use ss command:
+
 ```bash
-# Use ss command
 ss -tan | grep 443
 ```
 ---
@@ -60,20 +72,45 @@ ss -tan | grep 443
 
 ### 4. Test with HTTP Proxy
 
+Set HTTP proxy environment variable:
+
 ```bash
-# Set HTTP proxy environment variable
 export HTTP_PROXY="http://proxy-server:8080"
+```
+
+Set HTTPS proxy environment variable:
+
+```bash
 export HTTPS_PROXY="http://proxy-server:8080"
+```
+
+Set NO_PROXY to exclude localhost:
+
+```bash
 export NO_PROXY="localhost,127.0.0.1"
+```
 
-# Test curl through proxy
+Test curl through proxy:
+
+```bash
 curl -v -x $HTTP_PROXY https://api.datadoghq.com/api/v1/validate
+```
 
-# Test with proxy authentication
+Test with proxy authentication:
+
+```bash
 curl -v -x http://username:password@proxy-server:8080 https://api.datadoghq.com/api/v1/validate
+```
 
-# Check if proxy is set
+Check if HTTP_PROXY is set:
+
+```bash
 echo $HTTP_PROXY
+```
+
+Check if HTTPS_PROXY is set:
+
+```bash
 echo $HTTPS_PROXY
 ```
 
@@ -81,14 +118,21 @@ echo $HTTPS_PROXY
 
 ### 5. Test with SOCKS Proxy
 
+Set SOCKS proxy:
+
 ```bash
-# Set SOCKS proxy
 export ALL_PROXY="socks5://proxy-server:1080"
+```
 
-# Test with curl (SOCKS5)
+Test with curl (SOCKS5):
+
+```bash
 curl -v -x socks5://proxy-server:1080 https://api.datadoghq.com/api/v1/validate
+```
 
-# Test with SOCKS4
+Test with SOCKS4:
+
+```bash
 curl -v -x socks4://proxy-server:1080 https://api.datadoghq.com/api/v1/validate
 ```
 
@@ -96,30 +140,46 @@ curl -v -x socks4://proxy-server:1080 https://api.datadoghq.com/api/v1/validate
 
 ### 6. Configure Datadog Agent for Proxy
 
-```bash
-# Edit Datadog agent configuration
-sudo nano /etc/datadog-agent/datadog.yaml
+Edit Datadog agent configuration:
 
-# Add proxy configuration:
+```bash
+sudo nano /etc/datadog-agent/datadog.yaml
+```
+
+Add proxy configuration to the file:
+
+```yaml
 # proxy:
 #   https: "http://proxy-server:8080"
 #   http: "http://proxy-server:8080"
 #   no_proxy:
 #     - "localhost"
 #     - "127.0.0.1"
+```
 
-# Or with authentication:
+Or with authentication:
+
+```yaml
 # proxy:
 #   https: "http://username:password@proxy-server:8080"
 #   http: "http://username:password@proxy-server:8080"
+```
 
-# Verify configuration
+Verify proxy configuration:
+
+```bash
 sudo grep -A 5 "^proxy:" /etc/datadog-agent/datadog.yaml
+```
 
-# Restart agent
+Restart agent to apply changes:
+
+```bash
 sudo systemctl restart datadog-agent
+```
 
-# Check agent status
+Check agent status:
+
+```bash
 sudo systemctl status datadog-agent
 ```
 
@@ -129,20 +189,33 @@ sudo systemctl status datadog-agent
 
 ### 7. Test All Datadog API Endpoints
 
+Test API endpoint:
+
 ```bash
-# Test API endpoint
 curl -s -I https://api.datadoghq.com/api/v1/validate -H "DD-API-KEY: $DD_API_KEY" | head -5
+```
 
-# Test Trace/APM endpoint
+Test Trace/APM endpoint:
+
+```bash
 curl -s -I https://trace.datadoghq.com/api/v2/apm/traces -H "DD-API-KEY: $DD_API_KEY" | head -5
+```
 
-# Test Logs endpoint
+Test Logs endpoint:
+
+```bash
 curl -s -I https://http-intake.logs.datadoghq.com/v1/input -H "DD-API-KEY: $DD_API_KEY" | head -5
+```
 
-# Test Metrics endpoint
+Test Metrics endpoint:
+
+```bash
 curl -s -I https://api.datadoghq.com/api/v1/series -H "DD-API-KEY: $DD_API_KEY" | head -5
+```
 
-# Test RUM endpoint
+Test RUM endpoint:
+
+```bash
 curl -s -I https://rum.datadoghq.com/api/v2/rum -H "DD-API-KEY: $DD_API_KEY" | head -5
 ```
 
@@ -150,20 +223,33 @@ curl -s -I https://rum.datadoghq.com/api/v2/rum -H "DD-API-KEY: $DD_API_KEY" | h
 
 ### 8. Test Datadog Agent Connectivity
 
+Run agent diagnose command:
+
 ```bash
-# Run agent diagnose command
 sudo datadog-agent diagnose
+```
 
-# Check agent connectivity to Datadog
+Check agent connectivity to Datadog:
+
+```bash
 sudo datadog-agent status
+```
 
-# Test agent API validation
+Test agent API validation:
+
+```bash
 sudo datadog-agent diagnose | grep -i "connectivity\|datadog"
+```
 
-# Check agent configuration
+Check agent configuration:
+
+```bash
 sudo datadog-agent configcheck
+```
 
-# View agent integration status
+View agent integration status:
+
+```bash
 sudo datadog-agent integration show
 ```
 
@@ -173,23 +259,39 @@ sudo datadog-agent integration show
 
 ### 9. Check Network Routes
 
+Show routing table:
+
 ```bash
-# Show routing table
 ip route list
+```
 
-# Show default gateway
+Show default gateway:
+
+```bash
 ip route show | grep default
+```
 
-# Trace route to Datadog
+Trace route to Datadog:
+
+```bash
 traceroute api.datadoghq.com
+```
 
-# Trace with IPv4 only
+Trace with IPv4 only:
+
+```bash
 traceroute -4 api.datadoghq.com
+```
 
-# Check MTU size
+Check MTU size:
+
+```bash
 ip link show | grep mtu
+```
 
-# Test with different packet sizes
+Test with different packet sizes:
+
+```bash
 ping -c 3 -M do -s 1472 api.datadoghq.com
 ```
 
@@ -197,20 +299,33 @@ ping -c 3 -M do -s 1472 api.datadoghq.com
 
 ### 10. Test Proxy Firewall Rules
 
+Check if proxy port is listening:
+
 ```bash
-# Check if proxy port is listening
 sudo ss -tlnp | grep 8080
+```
 
-# Check firewall rules
+Check firewall rules:
+
+```bash
 sudo iptables -L -n | grep 8080
+```
 
-# Check firewalld rules
+Check firewalld rules:
+
+```bash
 sudo firewall-cmd --list-all
+```
 
-# Test if port is accessible
+Test if port is accessible:
+
+```bash
 nc -zv proxy-server 8080
+```
 
-# Test SSL/TLS through proxy
+Test SSL/TLS through proxy:
+
+```bash
 openssl s_client -proxy proxy-server:8080 -connect api.datadoghq.com:443
 ```
 
@@ -218,23 +333,39 @@ openssl s_client -proxy proxy-server:8080 -connect api.datadoghq.com:443
 
 ### 11. Check Network Interface Status
 
+Show all network interfaces:
+
 ```bash
-# Show all network interfaces
 ip addr show
+```
 
-# Show interface details
+Show interface details:
+
+```bash
 ip link show
+```
 
-# Check network connectivity
+Check network connectivity:
+
+```bash
 ping -c 3 8.8.8.8
+```
 
-# Show active connections
+Show active connections:
+
+```bash
 ss -tan
+```
 
-# Monitor network traffic
+Monitor network traffic:
+
+```bash
 iftop
+```
 
-# Show network statistics
+Show network statistics:
+
+```bash
 netstat -s
 ```
 
@@ -244,20 +375,33 @@ netstat -s
 
 ### 12. Test SSL/TLS Certificates
 
+Check certificate validity:
+
 ```bash
-# Check certificate validity
 openssl s_client -connect api.datadoghq.com:443 -showcerts
+```
 
-# Check certificate expiration
+Check certificate expiration:
+
+```bash
 openssl s_client -connect api.datadoghq.com:443 | openssl x509 -noout -dates
+```
 
-# Verify certificate chain
+Verify certificate chain:
+
+```bash
 echo | openssl s_client -connect api.datadoghq.com:443 -showcerts 2>/dev/null | grep "subject="
+```
 
-# Test with custom CA bundle
+Test with custom CA bundle:
+
+```bash
 curl -v --cacert /path/to/ca-bundle.crt https://api.datadoghq.com/api/v1/validate
+```
 
-# Check certificate on proxy
+Check certificate on proxy:
+
+```bash
 openssl s_client -connect proxy-server:8080 -showcerts
 ```
 
@@ -265,21 +409,39 @@ openssl s_client -connect proxy-server:8080 -showcerts
 
 ### 13. Handle SSL Certificate Issues
 
+Ignore SSL verification (not recommended for production):
+
 ```bash
-# Ignore SSL verification (not recommended for production)
 curl -k https://api.datadoghq.com/api/v1/validate
+```
 
-# Test with debug SSL
+Test with debug SSL:
+
+```bash
 openssl s_client -debug -connect api.datadoghq.com:443
+```
 
-# Check system CA certificates
+Check system CA certificates:
+
+```bash
 ls -la /etc/ssl/certs/
+```
 
-# Update CA certificates
+Update CA certificates:
+
+```bash
 sudo update-ca-certificates
+```
 
-# Import custom certificate
+Import custom certificate:
+
+```bash
 sudo cp /path/to/cert.pem /etc/ssl/certs/
+```
+
+Update CA certificates after import:
+
+```bash
 sudo update-ca-certificates
 ```
 
@@ -289,8 +451,9 @@ sudo update-ca-certificates
 
 ### 14. Test Agent with Proxy Configuration
 
+Create temporary proxy test config:
+
 ```bash
-# Create temporary proxy test config
 sudo tee /etc/datadog-agent/conf.d/test_proxy.yaml > /dev/null << EOF
 init_config:
 
@@ -301,14 +464,23 @@ instances:
     proxy:
       https: "http://proxy-server:8080"
 EOF
+```
 
-# Check if agent can reach Datadog through proxy
+Check if agent can reach Datadog through proxy:
+
+```bash
 sudo datadog-agent check test_proxy
+```
 
-# View agent logs for proxy errors
+View agent logs for proxy errors:
+
+```bash
 sudo tail -50 /var/log/datadog/agent.log | grep -i proxy
+```
 
-# Clean up test config
+Clean up test config:
+
+```bash
 sudo rm /etc/datadog-agent/conf.d/test_proxy.yaml
 ```
 
@@ -316,17 +488,27 @@ sudo rm /etc/datadog-agent/conf.d/test_proxy.yaml
 
 ### 15. Monitor Proxy Traffic
 
+Monitor outgoing connections to Datadog:
+
 ```bash
-# Monitor outgoing connections to Datadog
 sudo tcpdump -i any -n "host api.datadoghq.com or host trace.datadoghq.com"
+```
 
-# Capture proxy traffic
+Capture proxy traffic:
+
+```bash
 sudo tcpdump -i any -w proxy_traffic.pcap port 8080
+```
 
-# Show connections to Datadog
+Show connections to Datadog:
+
+```bash
 sudo netstat -tulnp | grep -i datadog
+```
 
-# Monitor agent connections
+Monitor agent connections:
+
+```bash
 sudo lsof -p $(pgrep -f datadog-agent) -i
 ```
 
@@ -362,30 +544,73 @@ echo "=== PROXY TEST ===" && timeout 5 nc -zv proxy-server 8080 && echo "✓ Pro
 
 ### 19. Set and Verify Proxy Environment Variables
 
+Set proxy for current session:
+
 ```bash
-# Set proxy for current session
 export HTTP_PROXY="http://proxy-server:8080"
+```
+
+Set HTTPS proxy:
+
+```bash
 export HTTPS_PROXY="http://proxy-server:8080"
+```
+
+Set FTP proxy:
+
+```bash
 export FTP_PROXY="http://proxy-server:8080"
+```
+
+Set NO_PROXY to exclude hosts:
+
+```bash
 export NO_PROXY="localhost,127.0.0.1,*.internal"
+```
 
-# Set with authentication
+Set proxy with authentication:
+
+```bash
 export HTTP_PROXY="http://username:password@proxy-server:8080"
+```
+
+Set HTTPS proxy with authentication:
+
+```bash
 export HTTPS_PROXY="http://username:password@proxy-server:8080"
+```
 
-# Verify settings
+Verify HTTP_PROXY setting:
+
+```bash
 echo "HTTP_PROXY: $HTTP_PROXY"
-echo "HTTPS_PROXY: $HTTPS_PROXY"
-echo "NO_PROXY: $NO_PROXY"
+```
 
-# Make persistent (add to ~/.bashrc or ~/.zshrc)
+Verify HTTPS_PROXY setting:
+
+```bash
+echo "HTTPS_PROXY: $HTTPS_PROXY"
+```
+
+Verify NO_PROXY setting:
+
+```bash
+echo "NO_PROXY: $NO_PROXY"
+```
+
+Make persistent (add to ~/.bashrc or ~/.zshrc):
+
+```bash
 cat >> ~/.bashrc << EOF
 export HTTP_PROXY="http://proxy-server:8080"
 export HTTPS_PROXY="http://proxy-server:8080"
 export NO_PROXY="localhost,127.0.0.1"
 EOF
+```
 
-# Source the file
+Source the file to apply changes:
+
+```bash
 source ~/.bashrc
 ```
 
@@ -393,25 +618,38 @@ source ~/.bashrc
 
 ### 20. Set Proxy for System Services
 
-```bash
-# Create systemd drop-in directory
-sudo mkdir -p /etc/systemd/system/datadog-agent.service.d/
+Create systemd drop-in directory:
 
-# Create environment file
+```bash
+sudo mkdir -p /etc/systemd/system/datadog-agent.service.d/
+```
+
+Create environment file with proxy settings:
+
+```bash
 sudo tee /etc/systemd/system/datadog-agent.service.d/proxy.conf > /dev/null << EOF
 [Service]
 Environment="HTTP_PROXY=http://proxy-server:8080"
 Environment="HTTPS_PROXY=http://proxy-server:8080"
 Environment="NO_PROXY=localhost,127.0.0.1"
 EOF
+```
 
-# Reload systemd
+Reload systemd to apply changes:
+
+```bash
 sudo systemctl daemon-reload
+```
 
-# Restart agent
+Restart datadog agent:
+
+```bash
 sudo systemctl restart datadog-agent
+```
 
-# Verify
+Verify environment variables are set:
+
+```bash
 sudo systemctl show-environment | grep PROXY
 ```
 
@@ -421,20 +659,33 @@ sudo systemctl show-environment | grep PROXY
 
 ### 21. Diagnose Proxy Connection Problems
 
+Test with verbose curl:
+
 ```bash
-# Test with verbose curl
 curl -vv -x http://proxy-server:8080 https://api.datadoghq.com/api/v1/validate
+```
 
-# Check for DNS issues
+Check for DNS issues:
+
+```bash
 host api.datadoghq.com
+```
 
-# Test with strace to see system calls
+Test with strace to see system calls:
+
+```bash
 strace -e connect,openat curl -x http://proxy-server:8080 https://api.datadoghq.com/api/v1/validate 2>&1 | tail -50
+```
 
-# Check open file descriptors
+Check open file descriptors:
+
+```bash
 lsof -p $(pgrep curl) 2>/dev/null
+```
 
-# Monitor with tcpdump
+Monitor with tcpdump:
+
+```bash
 sudo tcpdump -i any -n port 8080 or port 443 -w /tmp/proxy_debug.pcap
 ```
 
@@ -442,26 +693,49 @@ sudo tcpdump -i any -n port 8080 or port 443 -w /tmp/proxy_debug.pcap
 
 ### 22. Common Proxy Issues and Fixes
 
+**Issue 1: Connection Refused**
+
+Fix - Verify proxy is running:
+
 ```bash
-# Issue 1: Connection Refused
-# Fix: Verify proxy is running and accessible
 sudo systemctl status proxy-service
+```
+
+Fix - Check proxy is listening on port 8080:
+
+```bash
 sudo ss -tlnp | grep 8080
+```
 
-# Issue 2: SSL Certificate Error
-# Fix: Update CA certificates
+**Issue 2: SSL Certificate Error**
+
+Fix - Update CA certificates:
+
+```bash
 sudo update-ca-certificates
+```
 
-# Issue 3: Authentication Failed
-# Fix: Verify proxy credentials
+**Issue 3: Authentication Failed**
+
+Fix - Verify proxy credentials:
+
+```bash
 curl -x http://username:password@proxy-server:8080 https://api.datadoghq.com/api/v1/validate -v
+```
 
-# Issue 4: Timeout
-# Fix: Increase timeout and check network
+**Issue 4: Timeout**
+
+Fix - Increase timeout and check network:
+
+```bash
 curl -m 30 -x http://proxy-server:8080 https://api.datadoghq.com/api/v1/validate
+```
 
-# Issue 5: Agent not sending metrics
-# Fix: Check agent logs
+**Issue 5: Agent not sending metrics**
+
+Fix - Check agent logs for proxy errors:
+
+```bash
 sudo tail -100 /var/log/datadog/agent.log | grep -i proxy
 ```
 
@@ -471,25 +745,38 @@ sudo tail -100 /var/log/datadog/agent.log | grep -i proxy
 
 ### 23. Test Proxy Performance
 
+Single request timing:
+
 ```bash
-# Single request timing
 curl -w "Total: %{time_total}s, Connect: %{time_connect}s, TTFB: %{time_starttransfer}s\n" \
   -x http://proxy-server:8080 https://api.datadoghq.com/api/v1/validate -o /dev/null -s
+```
 
-# Multiple requests to measure throughput
+Multiple requests to measure throughput (10 requests):
+
+```bash
 for i in {1..10}; do
   curl -s -x http://proxy-server:8080 https://api.datadoghq.com/api/v1/validate \
     -H "DD-API-KEY: test" -w "Request $i: %{time_total}s\n" -o /dev/null
 done
+```
 
-# Parallel requests
+Parallel requests (5 concurrent):
+
+```bash
 seq 1 5 | xargs -I {} -P 5 curl -s -x http://proxy-server:8080 \
   https://api.datadoghq.com/api/v1/validate -H "DD-API-KEY: test" -w "✓"
+```
 
-# Load test with Apache Bench
+Load test with Apache Bench:
+
+```bash
 ab -n 100 -c 10 -x proxy-server:8080 https://api.datadoghq.com/api/v1/validate
+```
 
-# Load test with wrk
+Load test with wrk:
+
+```bash
 wrk -t 4 -c 100 -d 30s -x proxy-server:8080 https://api.datadoghq.com/api/v1/validate
 ```
 

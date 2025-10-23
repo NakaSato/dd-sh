@@ -7,125 +7,85 @@ sidebar_label: Services
 
 Comprehensive guide to checking, monitoring, and managing systemd services on CentOS systems using `systemctl` and `journalctl`.
 
-## Commands in This Section
-
-### 📊 Service Check Commands
-Comprehensive systemctl commands to check, monitor, and manage services with 33+ commands for different scenarios.
-
-**Topics covered:**
-- Basic service status checking
-- Service enable/disable management
-- Advanced service monitoring
-- Specific service checks (Nginx, MySQL, PHP-FPM, etc.)
-- Service control and restart policies
-- Logging and troubleshooting
-- Performance monitoring
-- Port and network service checks
-- Dependency management
-
-**👉 [View Service Check Commands](./service-check-commands.md)**
-
----
-
-## Service Categories Covered
-
-### Web Servers
-- **Nginx** - HTTP reverse proxy and web server
-- **Apache/HTTPD** - Traditional web server
-
-### Databases
-- **MySQL/MariaDB** - Relational database
-- **PostgreSQL** - Advanced relational database
-- **Redis** - In-memory data store
-
-### Application Runtime
-- **PHP-FPM** - PHP FastCGI Process Manager
-- **Node.js** - JavaScript runtime
-- **Java** - Enterprise applications
-
-### Infrastructure
-- **SSH** - Secure shell service
-- **Datadog Agent** - Monitoring agent
-- **Custom services** - User-defined services
-
----
-
 ## Common Commands
 
 ### Status Checking
+
+Check service status:
 ```bash
-sudo systemctl status nginx              # Check service status
-sudo systemctl is-active nginx           # Check if running
-sudo systemctl is-enabled nginx          # Check if auto-starts
+sudo systemctl status nginx
+```
+
+Check if service is running:
+```bash
+sudo systemctl is-active nginx
+```
+
+Check if service auto-starts on boot:
+```bash
+sudo systemctl is-enabled nginx
 ```
 
 ### Control Operations
+
+Start service:
 ```bash
-sudo systemctl start nginx               # Start service
-sudo systemctl stop nginx                # Stop service
-sudo systemctl restart nginx             # Restart service
-sudo systemctl reload nginx              # Reload config
+sudo systemctl start nginx
+```
+
+Stop service:
+```bash
+sudo systemctl stop nginx
+```
+
+Restart service:
+```bash
+sudo systemctl restart nginx
+```
+
+Reload configuration without restarting:
+```bash
+sudo systemctl reload nginx
 ```
 
 ### Enable/Disable
+
+Enable service to auto-start on boot:
 ```bash
-sudo systemctl enable nginx              # Enable auto-start
-sudo systemctl disable nginx             # Disable auto-start
-sudo systemctl mask nginx                # Prevent starting
-sudo systemctl unmask nginx              # Allow starting
+sudo systemctl enable nginx
+```
+
+Disable service auto-start:
+```bash
+sudo systemctl disable nginx
+```
+
+Prevent service from being started:
+```bash
+sudo systemctl mask nginx
+```
+
+Allow service to be started:
+```bash
+sudo systemctl unmask nginx
 ```
 
 ### Logging
+
+Follow service logs in real-time:
 ```bash
-sudo journalctl -u nginx -f              # Follow logs
-sudo journalctl -u nginx -n 50           # Last 50 lines
-sudo journalctl -u nginx -p err          # Errors only
+sudo journalctl -u nginx -f
 ```
 
----
+Show last 50 lines of logs:
+```bash
+sudo journalctl -u nginx -n 50
+```
 
-## Command Statistics
-
-- **Total Service Commands**: 33+
-- **Service Types Covered**: 10+
-- **One-Liner Checks**: 10+
-- **Troubleshooting Procedures**: 5+
-
----
-
-## Quick Navigation
-
-### By Operation
-
-**Monitoring**
-- Service status checking
-- Resource usage monitoring
-- Port and network checking
-- Logging and error tracking
-
-**Management**
-- Start/stop/restart services
-- Enable/disable auto-start
-- Service lifecycle control
-- Dependency management
-
-**Troubleshooting**
-- Failed services
-- Configuration validation
-- Performance issues
-- Connection problems
-
----
-
-## Pro Tips
-
-:::tip
-- Use `--no-pager` flag to prevent paged output
-- Combine multiple checks for comprehensive diagnostics
-- Monitor logs while restarting services
-- Test configuration with `nginx -t` before reload
-- Use `journalctl` for persistent log analysis
-:::
+Show error messages only:
+```bash
+sudo journalctl -u nginx -p err
+```
 
 ---
 

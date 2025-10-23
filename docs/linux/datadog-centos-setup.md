@@ -526,4 +526,4 @@ echo "" && echo "=== CONNECTIVITY ===" && nc -zv api.datadoghq.com 443
 
 - [One-Line Bash Commands](./oneline-commands.md) - Essential Linux one-liners
 - [Service Check Commands](../services/service-check-commands.md) - systemctl management
-- [Datadog Proxy Testing](./datadog-proxy-testing.md) - Network proxy diagnostics
+- [Datadog Proxy Testing](../datadog/datadog-proxy-testing.md) - Network proxy diagnostics
