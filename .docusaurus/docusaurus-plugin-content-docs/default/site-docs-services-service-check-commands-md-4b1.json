@@ -1,0 +1,68 @@
+{
+  "id": "services/service-check-commands",
+  "title": "Service Check Commands for CentOS",
+  "description": "Comprehensive systemctl commands to check, monitor, and manage services on CentOS",
+  "source": "@site/docs/services/service-check-commands.md",
+  "sourceDirName": "services",
+  "slug": "/services/service-check-commands",
+  "permalink": "/docs/services/service-check-commands",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/services/service-check-commands.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "services",
+      "permalink": "/docs/tags/services"
+    },
+    {
+      "inline": true,
+      "label": "systemctl",
+      "permalink": "/docs/tags/systemctl"
+    },
+    {
+      "inline": true,
+      "label": "linux",
+      "permalink": "/docs/tags/linux"
+    },
+    {
+      "inline": true,
+      "label": "monitoring",
+      "permalink": "/docs/tags/monitoring"
+    },
+    {
+      "inline": true,
+      "label": "service-management",
+      "permalink": "/docs/tags/service-management"
+    },
+    {
+      "inline": true,
+      "label": "troubleshooting",
+      "permalink": "/docs/tags/troubleshooting"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3,
+    "sidebar_label": "Service Check Commands",
+    "description": "Comprehensive systemctl commands to check, monitor, and manage services on CentOS",
+    "tags": [
+      "services",
+      "systemctl",
+      "linux",
+      "monitoring",
+      "service-management",
+      "troubleshooting"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Services",
+    "permalink": "/docs/services/"
+  },
+  "next": {
+    "title": "Datadog",
+    "permalink": "/docs/datadog/"
+  }
+}

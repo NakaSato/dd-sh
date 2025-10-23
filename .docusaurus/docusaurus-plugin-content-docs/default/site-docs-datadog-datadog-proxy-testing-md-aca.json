@@ -1,0 +1,64 @@
+{
+  "id": "datadog/datadog-proxy-testing",
+  "title": "Network Proxy Testing for Datadog",
+  "description": "Comprehensive network proxy testing guide for Datadog agents with 25+ diagnostic commands",
+  "source": "@site/docs/datadog/datadog-proxy-testing.md",
+  "sourceDirName": "datadog",
+  "slug": "/datadog/datadog-proxy-testing",
+  "permalink": "/docs/datadog/datadog-proxy-testing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/datadog/datadog-proxy-testing.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "datadog",
+      "permalink": "/docs/tags/datadog"
+    },
+    {
+      "inline": true,
+      "label": "proxy",
+      "permalink": "/docs/tags/proxy"
+    },
+    {
+      "inline": true,
+      "label": "networking",
+      "permalink": "/docs/tags/networking"
+    },
+    {
+      "inline": true,
+      "label": "testing",
+      "permalink": "/docs/tags/testing"
+    },
+    {
+      "inline": true,
+      "label": "diagnostics",
+      "permalink": "/docs/tags/diagnostics"
+    },
+    {
+      "inline": true,
+      "label": "troubleshooting",
+      "permalink": "/docs/tags/troubleshooting"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Datadog Proxy Testing",
+    "description": "Comprehensive network proxy testing guide for Datadog agents with 25+ diagnostic commands",
+    "tags": [
+      "datadog",
+      "proxy",
+      "networking",
+      "testing",
+      "diagnostics",
+      "troubleshooting"
+    ]
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Datadog",
+    "permalink": "/docs/datadog/"
+  }
+}

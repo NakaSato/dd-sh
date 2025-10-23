@@ -1,0 +1,28 @@
+{
+  "id": "linux/index",
+  "title": "Linux Commands Documentation",
+  "description": "Essential Linux commands and one-liners for DevOps and system administration tasks, including Datadog integration and service management.",
+  "source": "@site/docs/linux/index.md",
+  "sourceDirName": "linux",
+  "slug": "/linux/",
+  "permalink": "/docs/linux/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/linux/index.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "sidebar_label": "Linux Commands"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "🚀 DevOps Bash Commands",
+    "permalink": "/docs/intro"
+  },
+  "next": {
+    "title": "oneline-commands",
+    "permalink": "/docs/linux/oneline-commands"
+  }
+}
