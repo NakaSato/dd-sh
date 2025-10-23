@@ -21,11 +21,11 @@
 ### Essential Commands
 
 ```bash
-npm start              # Dev server (port 3000), Tailwind watches files
-npm run build          # Production build, optimizes CSS and output
-npm run serve          # Preview production build locally
-npm run clear          # Clear Docusaurus cache (.docusaurus, build dirs)
-npm run typecheck      # Run TypeScript validation
+bun run start         # Dev server (port 3000), Tailwind watches files
+bun run build         # Production build, optimizes CSS and output
+bun run serve         # Preview production build locally
+bun run clear         # Clear Docusaurus cache (.docusaurus, build dirs)
+bun run typecheck     # Run TypeScript validation
 ```
 
 ### Common Patterns
@@ -162,7 +162,7 @@ sudo systemctl restart datadog-agent # Restart
 1. Create file: `docs/{section}/{topic}.md`
 2. Add frontmatter with `sidebar_position` (numeric, controls order)
 3. Update `sidebars.ts` if adding new section
-4. Run `npm start` to verify sidebar placement
+4. Run `bun start` to verify sidebar placement
 
 ### Style New Component
 
@@ -201,9 +201,9 @@ sudo systemctl restart datadog-agent # Restart
 
 ## Testing & Validation
 
-- **Link validation**: `npm run build` fails on broken internal links
-- **Type checking**: `npm run typecheck` (runs TSC)
-- **Local testing**: `npm start` watches files; refresh browser for changes
+- **Link validation**: `bun run build` fails on broken internal links
+- **Type checking**: `bun run typecheck` (runs TSC)
+- **Local testing**: `bun start` watches files; refresh browser for changes
 
 ---
 
@@ -216,5 +216,20 @@ sudo systemctl restart datadog-agent # Restart
 
 ---
 
+### Package Manager
+
+- **Bun**: Default package manager (specified in `package.json` with `"packageManager": "bun@1.1.29"`)
+- Use `bun install`, `bun add`, `bun run` commands instead of npm/yarn equivalents
+- Faster installation and execution compared to npm/yarn
+
+### Search Functionality
+
+- **Local Search**: Uses `@easyops-cn/docusaurus-search-local` plugin
+- **Features**: Keyboard shortcuts (Cmd/Ctrl+K), real-time search, highlighted results
+- **Styling**: Custom glass-morphism design matching navbar theme
+- **Configuration**: Disabled explicit search result path to avoid module resolution issues
+
+---
+
 **Last Updated**: October 2025  
-**Maintainer Context**: Recently rebuilt documentation with monospace font standardization, Tailwind CSS integration, and link validation.
+**Maintainer Context**: Recently rebuilt documentation with monospace font standardization, Tailwind CSS integration, local search implementation, and migration to Bun package manager.

@@ -75,7 +75,7 @@ const config: Config = {
         hashed: true,
         language: ['en'],
         highlightSearchTermsOnTargetPage: true,
-        explicitSearchResultPath: true,
+        explicitSearchResultPath: false,
         searchBarShortcut: true,
         searchBarShortcutHint: true,
         searchBarPosition: 'right',
