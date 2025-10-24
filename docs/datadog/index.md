@@ -174,6 +174,14 @@ NO_PROXY="localhost,127.0.0.1"
 
 ---
 
+## Documentation Sections
+
+- **[Dynatrace to Datadog Migration](./dynatrace-to-datadog-migration.md)** - Complete 11-step migration guide
+- **[Datadog Proxy Testing](./datadog-proxy-testing.md)** - Network proxy diagnostics
+- **[Agent Proxy Configuration](./agent-proxy-configuration.md)** - Proxy setup guide
+- **[OpenJDK Monitoring](./openjdk-centos-monitoring.md)** - Java application monitoring
+- **[SSL Certificate Configuration](./ssl-certificate-configuration.md)** - SSL setup guide
+
 ## Related Sections
 
 - **Linux Commands**: [Linux Documentation](../linux/index.md)

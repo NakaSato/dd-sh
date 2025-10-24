@@ -51,6 +51,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'datadog/index',
+        'datadog/dynatrace-to-datadog-migration',
         'datadog/agent-proxy-configuration',
         'datadog/openjdk-centos-monitoring',
         'datadog/datadog-proxy-testing',
