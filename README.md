@@ -67,8 +67,34 @@ bun run serve
 
 ## Features
 
-- 📚 **Documentation**: Comprehensive guides for Datadog agent setup and Linux commands
+- 📚 **Documentation**: Comprehensive guides for Datadog agent setup, Linux commands, Windows & PowerShell
+- 🐧 **Linux Guides**: CentOS setup, one-line bash commands, service management
+- 🪟 **Windows Guides**: PowerShell commands, Windows service management, Datadog agent for Windows
 - 🔍 **Local Search**: Fast client-side search with keyboard shortcuts (Ctrl/Cmd+K)
 - 🎨 **Modern UI**: Glass-morphism design with Tailwind CSS integration
 - 📱 **Responsive**: Mobile-optimized documentation experience
 - ⚡ **Fast**: Powered by Bun package manager for quick installs and builds
+
+## Documentation Structure
+
+### Linux Commands
+- Linux overview and command reference
+- One-line bash commands for system administration
+- Datadog CentOS setup and configuration
+
+### Windows & PowerShell
+- Windows documentation hub
+- Datadog Windows Server setup
+- 40+ PowerShell one-liners and scripts
+- Windows service management commands
+
+### Services Management
+- systemctl commands for CentOS/Linux
+- Windows service management with PowerShell
+- Service monitoring and troubleshooting
+
+### Datadog Integration
+- Agent proxy configuration
+- OpenJDK monitoring on CentOS
+- Network proxy testing and diagnostics
+- SSL certificate configuration

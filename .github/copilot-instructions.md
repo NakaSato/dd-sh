@@ -2,17 +2,18 @@
 
 ## Project Overview
 
-**dd-sh** is a Docusaurus-based documentation site for Datadog agent setup, Linux commands, and service management. The project combines:
+**dd-sh** is a Docusaurus-based documentation site for Datadog agent setup, Linux/Windows commands, and service management. The project combines:
 - **Docusaurus 3.9** (React + TypeScript) for documentation
 - **Tailwind CSS 4** for utility-first styling (recently added)
 - **MDX** for rich markdown with embedded React components
-- **Bash command reference** content focused on DevOps/monitoring
+- **Bash & PowerShell command reference** content focused on DevOps/monitoring
+- **Cross-platform documentation** for both Linux (CentOS) and Windows Server environments
 
 ### Key Architecture Decisions
 
 1. **Docusaurus + Infima**: Docusaurus provides the doc framework; Infima is the default theme. Tailwind is integrated with `important: true` and `preflight: false` to coexist without conflicts.
 2. **MonoSpace Fonts for Code**: Custom CSS in `src/css/custom.css` enforces monospace fonts across all `<code>`, `<pre>`, `.prism-code` elements (Courier New, SF Mono, Monaco, Cascadia Code).
-3. **Content Organization**: Docs split into `docs/linux/`, `docs/datadog/`, `docs/services/` with sidebar positioning via frontmatter.
+3. **Content Organization**: Docs split into `docs/linux/`, `docs/windows/`, `docs/datadog/`, `docs/services/` with sidebar positioning via frontmatter.
 
 ---
 
@@ -31,12 +32,12 @@ bun run typecheck     # Run TypeScript validation
 ### Common Patterns
 
 **Adding Documentation:**
-- Create `.md` or `.mdx` files in `docs/{linux,datadog,services}/`
+- Create `.md` or `.mdx` files in `docs/{linux,windows,datadog,services}/`
 - Add frontmatter: `sidebar_position`, `sidebar_label`, `description`, `tags`
 - Files auto-appear in sidebar based on `sidebars.ts` config
 
 **Code Blocks:**
-- **Always** use triple backticks with language: ` ```bash `, ` ```yaml `, ` ```tsx `
+- **Always** use triple backticks with language: ` ```bash `, ` ```powershell `, ` ```yaml `, ` ```tsx `
 - Avoid separate blocks for related commands—combine in one block with comments
 - Font size: 1rem (recently increased from 0.875rem for readability)
 - Monospace enforced via CSS custom properties
@@ -60,6 +61,11 @@ docs/
 │   ├── index.md          # Linux overview
 │   ├── datadog-centos-setup.md  # CentOS Datadog agent guide
 │   └── oneline-commands.md
+├── windows/
+│   ├── index.md          # Windows overview
+│   ├── datadog-windows-setup.md  # Windows Server Datadog agent guide
+│   ├── powershell-commands.md    # PowerShell one-liners (40+ commands)
+│   └── windows-service-management.md # Windows service management
 ├── datadog/
 │   ├── index.md          # Datadog overview
 │   └── datadog-proxy-testing.md # Proxy diagnostics guide
@@ -124,18 +130,26 @@ sudo systemctl restart datadog-agent # Restart
 
 ### Latest Updates (Oct 2025)
 
-1. **Tailwind CSS Integration**
+1. **Windows & PowerShell Documentation** (NEW)
+   - Created complete `docs/windows/` section with 4 comprehensive guides
+   - `datadog-windows-setup.md`: Full Windows Server Datadog agent setup (installation, configuration, troubleshooting)
+   - `powershell-commands.md`: 40+ PowerShell one-liners for system administration
+   - `windows-service-management.md`: Comprehensive Windows service management guide
+   - Updated sidebar navigation to include Windows section
+   - Cross-platform documentation now covers both Linux/CentOS and Windows Server
+
+2. **Tailwind CSS Integration**
    - Added `tailwindcss@4`, `@tailwindcss/postcss`, `postcss`, `autoprefixer`
    - Config: `tailwind.config.js` (custom primary palette, mono font extension)
    - PostCSS: `postcss.config.js` uses `@tailwindcss/postcss` (v4 compatibility)
    - CSS: `@tailwind` directives in `src/css/custom.css`
 
-2. **Code Block Styling Improvements**
+3. **Code Block Styling Improvements**
    - Font size: `0.875rem` → `1rem` (larger, more readable)
    - Line height: `1.5` → `1.6` (better vertical spacing)
    - Monospace fonts: Explicit stack (Courier New, SF Mono, Monaco, etc.)
 
-3. **Documentation Cleanup**
+4. **Documentation Cleanup**
    - Fixed broken link: `./datadog-proxy-testing.md` → `../datadog/datadog-proxy-testing.md`
    - Rebuilt `docs/linux/datadog-centos-setup.md` (removed duplicates, consistent formatting)
    - Created guides: `TAILWIND_SETUP.md`, `TAILWIND_INSTALLED.md`
@@ -232,4 +246,4 @@ sudo systemctl restart datadog-agent # Restart
 ---
 
 **Last Updated**: October 2025  
-**Maintainer Context**: Recently rebuilt documentation with monospace font standardization, Tailwind CSS integration, local search implementation, and migration to Bun package manager.
+**Maintainer Context**: Recently rebuilt documentation with monospace font standardization, Tailwind CSS integration, local search implementation, and migration to Bun package manager. Added comprehensive Windows & PowerShell documentation section with 4 guides covering Datadog agent setup, PowerShell one-liners, and service management for Windows Server environments.

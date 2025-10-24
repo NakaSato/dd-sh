@@ -27,6 +27,17 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Windows & PowerShell',
+      collapsed: false,
+      items: [
+        'windows/index',
+        'windows/datadog-windows-setup',
+        'windows/powershell-commands',
+        'windows/windows-service-management',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Services Management',
       collapsed: false,
       items: [
